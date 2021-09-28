@@ -1,0 +1,24 @@
+.not-nav-link{
+    flex: 1;
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    text-decoration: none;
+    color: white;
+    transition: var(--transition-speed);
+}
+
+.not-nav-link svg{
+    min-width: 3rem;
+    max-width: 3rem;
+    margin: 0 1rem;
+
+    transform: rotate(0deg);
+    transition: transform var(--transition-speed);
+}
+
+.dummy{
+    flex: 0;
+    transition: flex 600ms;
+}

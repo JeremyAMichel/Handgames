@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  
+html {
+  /* on utilise toute la hauteur du navigateur */
+  min-height: 100vh;
+}
+
+:root{
+  font-size: 16px;
+  --color-primary: #BC7651;
+  --transition-speed: 600ms;
+}
