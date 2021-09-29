@@ -54,6 +54,16 @@
     margin: 0 1rem;
 }
 
+.burger{
+  width: 30px;
+  color: black;
+}
+
+.burger:hover{
+  color: black;
+}
+
+
 @media only screen and (max-width: 600px){
   .real-nav-link{
     justify-content: center;
