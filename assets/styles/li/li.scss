@@ -1,0 +1,14 @@
+.nav-item{
+    width: 100%;
+    display: flex;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+@media only screen and (max-width: 600px){
+    .bg-black{
+        display: none;
+    }
+}

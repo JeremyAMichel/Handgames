@@ -1,0 +1,47 @@
+.navbar{
+    position: fixed;
+    background-color: var(--color-primary);
+    transition: width 200ms ease;  
+}
+
+.navbar:hover .not-nav-link svg{
+    transform: rotate(-180deg);
+}
+
+.navbar:hover .hovered{
+    flex: auto;
+}
+
+@media only screen and (min-width: 600px){
+    .navbar{
+        width: 5rem;
+        height: 100%; 
+    }
+    
+    .navbar:hover{
+        width: 11rem;
+    }
+
+    .navbar:hover .link-text{
+        display: inline;
+        transition: opacity var(--transition-speed);
+    }
+}
+
+@media only screen and (min-width: 900px){
+    .navbar:hover{
+        width: 13rem;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .navbar{
+        bottom:0;
+        width: 100vw;
+        height: 5rem; 
+    }
+
+
+}
+
