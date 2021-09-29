@@ -1,19 +1,11 @@
 .navbar{
-    width: 5rem;
-    height: 100%;
     position: fixed;
     background-color: var(--color-primary);
     transition: width 200ms ease;
     
 }
 
-.navbar:hover{
-    width: 16rem;
-}
 
-.navbar:hover .link-text{
-    display: block;
-}
 
 .navbar:hover .not-nav-link svg{
     transform: rotate(-180deg);
@@ -23,4 +15,31 @@
     flex: auto;
 }
 
+@media only screen and (min-width: 600px){
+    .navbar{
+        top:0;
+        width: 5rem;
+        height: 100%; 
+    }
+    
+    .navbar:hover{
+        width: 13rem;
+    }
+
+    .navbar:hover .link-text{
+        display: inline;
+        transition: opacity var(--transition-speed);
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .navbar{
+        bottom:0;
+        width: 100vw;
+        height: 5rem; 
+    }
+
+
+}
 
