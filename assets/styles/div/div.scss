@@ -1,0 +1,26 @@
+.titleHome{
+  text-align: center;
+}
+
+.quinconce-div-left{
+  justify-content: flex-start;
+}
+
+.quinconce-div-right{
+  justify-content: flex-end;
+
+}
+
+.quinconce-div{
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-center{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
