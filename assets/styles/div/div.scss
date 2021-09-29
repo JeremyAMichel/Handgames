@@ -33,12 +33,11 @@
     transition: flex 600ms;
 }
 
-@media only screen and (max-width: 600px){
-    .login-signup-div{
-        display: none;
-    }
+.dropdown{
+    display: none;
+    align-items: center;
 }
-   
+
 .titleHome{
   text-align: center;
 }
@@ -62,6 +61,16 @@
 .img-center{
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
+}
+
+.dropdown{
+        display: flex;
+}
+
+@media only screen and (max-width: 600px){
+    .login-signup-div{
+        display: none;
+    }
 }
 

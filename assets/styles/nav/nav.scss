@@ -1,7 +1,8 @@
 .navbar{
     position: fixed;
     background-color: var(--color-primary);
-    transition: width 200ms ease;  
+    transition: width 200ms ease; 
+    top: 82px; 
 }
 
 .navbar:hover .not-nav-link svg{
