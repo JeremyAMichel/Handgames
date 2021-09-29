@@ -65,12 +65,16 @@
 }
 
 .dropdown{
-        display: flex;
+    display: none;
 }
 
 @media only screen and (max-width: 600px){
     .login-signup-div{
         display: none;
+    }
+
+    .dropdown{
+        display: flex;
     }
 }
 
