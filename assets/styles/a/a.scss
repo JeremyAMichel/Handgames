@@ -1,6 +1,18 @@
+
+@media only screen and (max-width: 600px){
+  .real-nav-link{
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 600px){
+  .bouton-login{
+    margin-right: 0.5rem;
+  }
+}
+
 .bouton-login {
   background-color: var(--color-primary);
-
 }
 
 .bouton-signup {
@@ -64,15 +76,4 @@
 }
 
 
-@media only screen and (max-width: 600px){
-  .real-nav-link{
-    justify-content: center;
-  }
-}
-
-@media only screen and (min-width: 600px){
-  .bouton-login{
-    margin-right: 0.5rem;
-  }
-}
 

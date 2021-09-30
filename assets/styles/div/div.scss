@@ -1,3 +1,13 @@
+@media only screen and (max-width: 600px){
+  .login-signup-div{
+    display: none;
+  }
+
+  .dropdown{
+    display: flex;
+  }
+}
+
 .logo-header{
   clip-path: ellipse(50% 50% at 50% 50%);
   background-color: navajowhite;
@@ -5,37 +15,37 @@
 }
 
 .login-signup-div{
-    display: flex;   
-    align-items: center;
+  display: flex;   
+  align-items: center;
 }
 
 .not-nav-link{
-    flex: 1;
-    max-width: fit-content;
-    display: flex;
-    align-items: center;
-    height: 5rem;
-    text-decoration: none;
-    color: white;
-    transition: var(--transition-speed);
+  flex: 1;
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  text-decoration: none;
+  color: white;
+  transition: var(--transition-speed);
 }
 
 .not-nav-link svg{
-    min-width: 3rem;
-    max-width: 3rem;
-    margin: 0 1rem;
-    transform: rotate(0deg);
-    transition: transform var(--transition-speed);
+  min-width: 3rem;
+  max-width: 3rem;
+  margin: 0 1rem;
+  transform: rotate(0deg);
+  transition: transform var(--transition-speed);
 }
 
 .dummy{
-    flex: 0;
-    transition: flex 600ms;
+  flex: 0;
+  transition: flex 600ms;
 }
 
 .dropdown{
-    display: none;
-    align-items: center;
+  display: none;
+  align-items: center;
 }
 
 .titleHome{
@@ -65,16 +75,5 @@
 }
 
 .dropdown{
-    display: none;
+  display: none;
 }
-
-@media only screen and (max-width: 600px){
-    .login-signup-div{
-        display: none;
-    }
-
-    .dropdown{
-        display: flex;
-    }
-}
-
