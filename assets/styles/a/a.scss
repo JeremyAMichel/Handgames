@@ -5,7 +5,7 @@
 }
 
 .bouton-signup {
-  background-color: #C3A6A0;
+  background-color: var(--color-secondary);
 }
 
 .bouton{
@@ -39,6 +39,14 @@
   text-decoration: none;
   color: black;
   transition: var(--transition-speed);
+}
+
+.nav-submenu:hover{
+  background-color: var(--color-secondary);
+}
+
+.nav-submenu:hover .link-text{
+  color: black;
 }
 
 .real-nav-link{

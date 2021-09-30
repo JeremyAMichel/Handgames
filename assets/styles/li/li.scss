@@ -1,13 +1,17 @@
 .nav-item{
     width: 100%;
     display: flex;
+    transition: var(--transition-speed);
 }
 
 .bg-black{
     background-color: black;
 }
 
-.nav-item .real-nav-link:hover{
+.nav-item:hover .real-nav-link{
     color: white;
+}
+
+.nav-item:hover{
     background-color: black;
 }
