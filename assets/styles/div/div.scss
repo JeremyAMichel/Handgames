@@ -8,6 +8,7 @@
   }
 }
 
+
 .logo-header{
   clip-path: ellipse(50% 50% at 50% 50%);
   background-color: navajowhite;
@@ -76,4 +77,59 @@
 
 .dropdown{
   display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  height: auto;
+  position: relative;
+  transition: all 1s ease-in-out;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 100ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: var(--color-primary);
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.card-actu {
+  border: 4px groove var(--color-primary);
+  border-radius: 40px 40px 40px 40px;
+}
+@media screen and (max-width: 700px){
+  .popup{
+    width: 70%;
+  }
 }
