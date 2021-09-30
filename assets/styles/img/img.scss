@@ -1,0 +1,84 @@
+.moving2 {
+    position: absolute;
+    animation: moveInAnimation ease 5s;
+}
+
+.swinging2 {
+    animation: swingInAnimation ease 3s;
+    animation-delay: 5s;
+	animation-iteration-count: infinite;
+}
+
+.moving{
+    opacity: 0;
+    position: absolute;
+    animation-duration: 5s;
+    -webkit-animation-name: moveInAnimation;
+    animation-name: moveInAnimation;
+}
+
+.swinging{
+    opacity: 0;
+    position: absolute;
+    animation-duration: 3s;
+    animation-delay: 5s;
+    -webkit-animation-name: swingInAnimation;
+    animation-name: swingInAnimation;
+    animation-iteration-count: infinite;
+}
+
+@keyframes moveInAnimation {
+	0% {
+        opacity: 1;
+		top: 122.5px;
+        left: 500px;
+	}
+    20%{
+        opacity: 1;
+        top: 122.5px;
+        left: 250px;
+    }
+    40%{
+        opacity: 1;
+        top: 61.25px;
+        left: 250px;
+    }
+    60%{
+        opacity: 1;
+        top: 61.25px;
+        left: 125px;
+    }
+    80%{
+        opacity: 1;
+        top: 0;
+        left: 125px;
+    }
+    100%{
+        opacity: 1;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes swingInAnimation {
+	0% {
+        opacity: 1;  
+		transform: rotate(0deg);
+	}
+	25%{
+        opacity: 1; 
+		transform: rotate(5deg);
+	}
+	50%{
+        opacity: 1; 
+		transform: rotate(0deg);
+	}
+	75%{
+        opacity: 1; 
+		transform: rotate(-5deg);
+	}
+	100%{
+        opacity: 1; 
+		transform: rotate(0deg)
+	}
+}
