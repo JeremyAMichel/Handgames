@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ActualitesController extends AbstractController
 {
     /**
-     * @Route("/actualites", name="actualites")
+     * @Route("/news", name="news")
      */
-    public function index(): Response
+    public function news(): Response
     {
-        return $this->render('actualites/actualites.html.twig', [
+        return $this->render('news/news.html.twig', [
 
         ]);
     }
