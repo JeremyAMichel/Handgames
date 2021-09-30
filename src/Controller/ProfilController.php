@@ -18,7 +18,7 @@ class ProfilController extends AbstractController
     }
 
     /**
-     * @Route("/profil-skin", name="profilSkins")
+     * @Route("/profil-skins", name="profilSkins")
      */
     public function profilSkins(): Response
     {

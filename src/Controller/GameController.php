@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class GameController extends AbstractController
 {
     /**
-     * @Route("/game", name="game")
+     * @Route("/games", name="games")
      */
-    public function game(): Response
+    public function games(): Response
     {
         return $this->render('game/game.html.twig', [
             

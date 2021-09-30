@@ -1,15 +1,4 @@
 
-@media only screen and (max-width: 600px){
-  .real-nav-link{
-    justify-content: center;
-  }
-}
-
-@media only screen and (min-width: 600px){
-  .bouton-login{
-    margin-right: 0.5rem;
-  }
-}
 
 .bouton-login {
   background-color: var(--color-primary);
@@ -45,25 +34,27 @@
   -moz-box-shadow: 2px 2px 4px #7f7f7f;
 }
 
-.real-nav-link{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 5rem;
-    text-decoration: none;
-    color: black;
-    transition: var(--transition-speed);
+.nav-submenu{
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  transition: var(--transition-speed);
 }
 
-.real-nav-link:hover{
-    color: white;
-    background-color: black;
+.real-nav-link{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  text-decoration: none;
+  color: black;
+  transition: var(--transition-speed);
 }
 
 .real-nav-link svg{
-    min-width: 3rem;
-    max-width: 3rem;
-    margin: 0 1rem;
+  min-width: 3rem;
+  max-width: 3rem;
+  margin: 0 1rem;
 }
 
 .burger{
@@ -76,4 +67,25 @@
 }
 
 
+@media only screen and (max-width: 600px){
+  .real-nav-link{
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 600px){
+  .bouton-login{
+    margin-right: 0.5rem;
+  }
+
+  .nav-submenu{
+    width: 6rem;
+  }
+}
+
+@media only screen and (min-width: 900px){
+  .nav-submenu{
+    width: 8rem;
+  }
+}
 
