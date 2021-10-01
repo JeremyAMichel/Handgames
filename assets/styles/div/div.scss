@@ -77,6 +77,14 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.div-submenu .nav-submenu:first-child:hover{
+  border-radius: 0px 0px 0px 10px;
+}
+
+.div-submenu .nav-submenu:last-child:hover{
+  border-radius: 10px 0px 0px 0px;
+}
  
 .div-Techno{
   width: 100%;
