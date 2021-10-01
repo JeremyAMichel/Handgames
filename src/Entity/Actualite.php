@@ -32,6 +32,16 @@ class Actualite
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description_courte;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $path_img;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class Actualite
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescriptionCourte(): ?string
+    {
+        return $this->description_courte;
+    }
+
+    public function setDescriptionCourte(string $description_courte): self
+    {
+        $this->description_courte = $description_courte;
+
+        return $this;
+    }
+
+    public function getPathImg(): ?string
+    {
+        return $this->path_img;
+    }
+
+    public function setPathImg(?string $path_img): self
+    {
+        $this->path_img = $path_img;
 
         return $this;
     }

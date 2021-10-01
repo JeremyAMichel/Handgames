@@ -66,6 +66,11 @@
   margin-bottom: 20px;
 }
 
+}
+  
+
+
+
 .hovered-nav{
   width: 100%;
   transition: var(--transition-speed);
@@ -109,6 +114,72 @@
 .relative{
   position: relative;
   z-index: -1;
+.dropdown{
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity var(--transition-speed);
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 90px auto;
+  padding: 20px;
+  background: #FFF;
+  border-radius: 5px;
+  width: 65%;
+  max-height: 70vh;
+  position: relative;
+  transition: var(--transition-speed);
+  overflow: auto;
+
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all var(--transition-speed);
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: var(--color-primary);
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.card-actu {
+  border: 4px groove var(--color-primary);
+  border-radius: 40px 40px 40px 40px;
+}
+
+@media only screen and (min-width: 600px){
+  .popup{
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .popup{
+    width: 85%;
+  }
 }
 
 @media only screen and (max-width: 600px){
@@ -120,3 +191,5 @@
     display: flex;
   }
 }
+
+
