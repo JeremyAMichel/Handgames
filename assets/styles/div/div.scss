@@ -66,11 +66,6 @@
   margin-bottom: 20px;
 }
 
-}
-  
-
-
-
 .hovered-nav{
   width: 100%;
   transition: var(--transition-speed);
@@ -114,6 +109,8 @@
 .relative{
   position: relative;
   z-index: -1;
+}
+
 .dropdown{
   display: none;
 }
