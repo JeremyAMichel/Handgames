@@ -3,10 +3,12 @@ main{
     padding: 1rem;
     padding-top: 95px;
 }
+
 @media only screen and (max-width: 600px){
     main{
         margin: 0;
         padding: 0.5rem;
         padding-top: 87px;
+        padding-bottom: 80px;
     }
 }

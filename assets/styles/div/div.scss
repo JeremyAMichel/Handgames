@@ -175,9 +175,56 @@
   border-radius: 40px 40px 40px 40px;
 }
 
+.img-display {
+  height: 100%;
+  width: auto;
+}
+
+.profil-pic-choice {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.separator{
+  height: 100%;
+  width: 0.1px;
+  border-left: 0.25px solid black;
+}
+
+.group-profil-pic{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.img-choice{
+  width: 22%;
+}
+
+.img-choice:hover{
+  cursor: pointer;
+}
+
+.confirmation{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 600px){
   .popup{
     width: 75%;
+  }
+
+  .separator{
+    margin-right: 1rem;
+  }
+
+  .img-display{
+    margin-right: 1rem;
   }
 }
 
@@ -195,6 +242,17 @@
   .dropdown{
     display: flex;
   }
+
+  .separator{
+    width: 100%;
+    height: 0.1px;
+    border-top: 0.25px solid black;
+    margin-bottom: 1rem;
+  }
+
+  .img-display {
+    height: 45%;
+    width: auto;
+    margin-bottom: 1rem;
+  }
 }
-
-

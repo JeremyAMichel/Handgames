@@ -4,3 +4,50 @@
   height: 130px;
   justify-content: center;
 }
+
+.section-photo-profil{
+  display: flex;
+  width: 100%;
+  height: 25rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid black;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 1377px){
+  .section-photo-profil{
+    height: 25rem;
+  }
+}
+
+@media only screen and (max-width: 1377px){
+  .section-photo-profil{
+    height: 21rem;
+  }
+}
+
+@media only screen and (max-width: 1188px){
+  .section-photo-profil{
+    height: 17rem;
+  }
+}
+
+@media only screen and (max-width: 992px){
+  .section-photo-profil{
+    height: 13rem;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .section-photo-profil{
+    height: 9rem;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .section-photo-profil{
+    height: 35rem;
+    flex-direction: column;
+  }
+}
