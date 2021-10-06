@@ -74,6 +74,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $classements;
 
 
+
     public function __construct()
     {
         $this->trophees = new ArrayCollection();
