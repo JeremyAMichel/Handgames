@@ -29,6 +29,11 @@ class Trophee
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -74,6 +79,18 @@ class Trophee
         if ($this->users->removeElement($user)) {
             $user->removeTrophee($this);
         }
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
 
         return $this;
     }

@@ -167,6 +167,12 @@
   border-radius: 40px 40px 40px 40px;
 }
 
+.avatar-stats {
+  clip-path: ellipse(50% 50% at 50% 50%);
+  background-color: #7f7f7f;
+  height: 50px;
+  width: 50px;
+}
 @media only screen and (min-width: 600px){
   .popup{
     width: 75%;
