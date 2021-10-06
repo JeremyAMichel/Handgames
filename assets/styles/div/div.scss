@@ -1,3 +1,12 @@
+.border{
+  border: solid;
+}
+
+.skin-flex{
+  display: flex;
+  justify-content: space-between;
+}
+
 .logo-header{
   clip-path: ellipse(50% 50% at 50% 50%);
   background-color: navajowhite;
@@ -262,3 +271,5 @@
     margin-bottom: 1rem;
   }
 }
+
+

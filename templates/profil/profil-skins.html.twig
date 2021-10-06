@@ -4,6 +4,27 @@
 
 {% block body %}
 
-    <p>profil skins works</p>
+    <h2 class="img-center">My skins</h2>
+
+    <div class="skin-flex mb-5">
+        {% for i in 0..2 %}
+
+            {% include 'partial/card-skin.html.twig' %}
+
+        {% endfor %}
+    </div>
+
+    <hr class="bg-dark border-2 border-top border-dark mb-5">
+
+    <h2 class="img-center">Champion Frames</h2>
+
+    <div class="skin-flex mb-5">
+        {% for i in 0..3 %}
+
+            {% include 'partial/frame.html.twig' %}
+
+        {% endfor %}
+    </div>
+
 
 {% endblock %}
