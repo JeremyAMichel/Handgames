@@ -231,7 +231,9 @@
   font-weight: bold;
   padding-top: 5px;
   padding-bottom: 5px;
+  width: 31%;
 }
+
 
 .stats-win {
   border-color: lawngreen;
@@ -245,13 +247,39 @@
 
 .stats-total {
   border-color: var(--color-primary);
-  background-color: rosybrown;
+  background-color: var(--color-secondary);
 }
 
-.active {
-  
+.card-content-reward:hover {
+  background-color: var(--color-secondary);
+  cursor: default;
 }
 
+.card-content-reward {
+  background: var(--color-primary);
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: var(--transition-speed);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.div-reward-size {
+  width: 85%;
+}
+
+.reward-container {
+  width: 22%;
+}
+.rewards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
 @media only screen and (min-width: 600px){
   .popup{
     width: 75%;
@@ -269,6 +297,10 @@
 @media only screen and (max-width: 600px){
   .popup{
     width: 85%;
+  }
+  .rewards-container{
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -293,4 +325,45 @@
     width: auto;
     margin-bottom: 1rem;
   }
+}
+@media only screen and (max-width: 1188px){
+  .reward-container {
+    width: 31%;
+  }
+}
+
+@media only screen and (max-width: 800px){
+  .reward-container {
+    width: 45%;
+  }
+  #stats-size{
+    flex-direction: column;
+    align-items: center;
+  }
+  .stats-games {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1100px){
+  #stats-size{
+    flex-direction: column;
+    align-items: center;
+  }
+  .stats-games {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .reward-container {
+    width: 95%;
+  }
+  .div-reward-size {
+    width: 50%;
+  }
+  .stats-games {
+    width: 85%;
+  }
+
 }
