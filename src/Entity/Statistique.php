@@ -39,6 +39,11 @@ class Statistique
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $level;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -108,6 +113,18 @@ class Statistique
         if ($this->users->removeElement($user)) {
             $user->removeStatistique($this);
         }
+
+        return $this;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(int $level): self
+    {
+        $this->level = $level;
 
         return $this;
     }

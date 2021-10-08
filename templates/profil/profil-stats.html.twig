@@ -6,15 +6,42 @@
     <div class="titleHome mb-5">
         <h2>Stats</h2>
     </div>
-    <div class="container">
+
+
         <div class="row">
-            <div class="col-12">
-                <div class="avatar-stats">
-                    <img src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg" width="" height="auto">
+            <div class="col-12 d-flex justify-content-center">
+
+                <div class="avatar-stats mb-5">
+                </div>
+            </div>
+            <p class="level-stats mb-5">Level statistique.level</p>
+        </div>
+
+        <div class="row mb-5">
+            <div id="stats-size" class="col-12 d-flex justify-content-center">
+                <div class=" stats-games stats-win">
+                    <p class="stats-center">statistique.nbrWin wins</p>
+                </div>
+                <div class=" stats-games stats-lose">
+                    <p class="stats-center">statistique.nbrLose loses</p>
+                </div>
+                <div class=" stats-games stats-total">
+                    <p class="stats-center">statistique.nbrPartie total party</p>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="titleHome mb-5">
+            <h2>Rewards</h2>
+        </div>
+
+        <div class="rewards-container">
+            {% for i in 0..15 %}
+                <div class="reward-container">
+                    {% include 'partial/trophee.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
 
 
 {% endblock %}

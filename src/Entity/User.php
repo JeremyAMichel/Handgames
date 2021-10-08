@@ -81,6 +81,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified = false;
 
 
+
     public function __construct()
     {
         $this->trophees = new ArrayCollection();
