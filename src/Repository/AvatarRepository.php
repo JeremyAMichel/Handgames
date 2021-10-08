@@ -6,6 +6,7 @@ use App\Entity\Avatar;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @method Avatar|null find($id, $lockMode = null, $lockVersion = null)
  * @method Avatar|null findOneBy(array $criteria, array $orderBy = null)

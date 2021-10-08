@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use App\Repository\AvatarRepository;
 use App\Security\EmailVerifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,9 +20,15 @@ class RegistrationController extends AbstractController
 {
     private $emailVerifier;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    /**
+     * @var AvatarRepository
+     */
+    private $avatarRepository;
+
+    public function __construct(EmailVerifier $emailVerifier, AvatarRepository $avatarRepository)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->avatarRepository = $avatarRepository;
     }
 
     /**
@@ -30,6 +37,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
+        $defaultAvatar = $this->avatarRepository->find(1);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -41,7 +49,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $user->setAvatar($defaultAvatar);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
