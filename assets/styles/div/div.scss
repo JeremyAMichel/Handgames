@@ -143,6 +143,7 @@
   visibility: hidden;
   opacity: 0;
 }
+
 .overlay:target {
   visibility: visible;
   opacity: 1;
@@ -153,12 +154,15 @@
   padding: 20px;
   background: #FFF;
   border-radius: 5px;
-  width: 65%;
-  max-height: 70vh;
   position: relative;
   transition: var(--transition-speed);
   overflow: auto;
 
+}
+
+.popup-actu-size{
+  width: 65%;
+  max-height: 70vh;
 }
 
 .popup .close {
@@ -171,12 +175,19 @@
   text-decoration: none;
   color: #333;
 }
+
 .popup .close:hover {
   color: var(--color-primary);
 }
+
 .popup .content {
   max-height: 30%;
   overflow: auto;
+}
+
+.popup-login-size {
+  width: 30%;
+  height: 60%;
 }
 
 .card-actu {
@@ -292,7 +303,7 @@
 }
 
 @media only screen and (min-width: 600px){
-  .popup{
+  .popup-actu-size{
     width: 75%;
   }
 
@@ -306,7 +317,7 @@
 }
 
 @media only screen and (max-width: 600px){
-  .popup{
+  .popup-actu-size{
     width: 85%;
   }
   .rewards-container{
