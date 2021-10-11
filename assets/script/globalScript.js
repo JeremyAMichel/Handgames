@@ -11,3 +11,6 @@ profilPics.forEach(pic => {
 function changeProfilPic(src){
     imgDisplay.src=src;
 }
+
+import './carousel-active/carouselActive';
+
