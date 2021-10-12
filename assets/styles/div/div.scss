@@ -139,7 +139,6 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
-  transition: opacity var(--transition-speed);
   visibility: hidden;
   opacity: 0;
 }
@@ -147,6 +146,22 @@
 .overlay:target {
   visibility: visible;
   opacity: 1;
+}
+
+.not-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity var(--transition-speed);
+  visibility: visible;
+  opacity: 1;
+}
+
+.close:hover{
+  cursor: pointer;
 }
 
 .popup {
@@ -157,7 +172,6 @@
   position: relative;
   transition: var(--transition-speed);
   overflow: auto;
-
 }
 
 .popup-actu-size{
@@ -187,7 +201,16 @@
 
 .popup-login-size {
   width: 30%;
-  height: 60%;
+  max-height: 65%;
+}
+
+.popup-signup-size {
+  width: 30%;
+  max-height: 65%;
+}
+
+.bouton:hover{
+  cursor: pointer;
 }
 
 .card-actu {
@@ -300,6 +323,13 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+}
+
+.login-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 600px){

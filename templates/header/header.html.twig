@@ -11,14 +11,14 @@
             </a>
             
             <div class="login-signup-div">
-                <a href="#popup-login" class="bouton-login bouton">Login</a>
-                <a href="#popup-signup" class="bouton-signup bouton">Signup</a>
+                <div class="bouton-login bouton">Login</div>
+                <div class="bouton-signup bouton">Signup</div>
             </div>
 
             <div id="popup-login" class="overlay">
                 <div class="popup popup-login-size">
                     <h2>Welcome</h2>
-                    <a class="close" href="{{ currentPage() }}">&times;</a>
+                    <div id="close-login" class="close">&times;</div>
                     <hr class="bg-dark border-2 border-top border-dark mb-3">
                     <div>
                         {{ loginFormRender()|raw }}
@@ -27,10 +27,11 @@
             </div>
 
             <div id="popup-signup" class="overlay">
-                <div class="popup">
+                <div class="popup popup-signup-size">
                     <h2>Signup</h2>
-                    <a class="close" href="{{ currentPage() }}">&times;</a>
-                    <div class="desc-longue">
+                    <div id="close-signup" class="close">&times;</div>
+                    <hr class="bg-dark border-2 border-top border-dark mb-3">
+                    <div>
                         <p>pop
                         </p>
                     </div>
