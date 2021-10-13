@@ -143,13 +143,29 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
-  transition: opacity var(--transition-speed);
   visibility: hidden;
   opacity: 0;
 }
+
 .overlay:target {
   visibility: visible;
   opacity: 1;
+}
+
+.not-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity var(--transition-speed);
+  visibility: visible;
+  opacity: 1;
+}
+
+.close:hover{
+  cursor: pointer;
 }
 
 .popup {
@@ -157,12 +173,14 @@
   padding: 20px;
   background: #FFF;
   border-radius: 5px;
-  width: 65%;
-  max-height: 70vh;
   position: relative;
   transition: var(--transition-speed);
   overflow: auto;
+}
 
+.popup-actu-size{
+  width: 65%;
+  max-height: 70vh;
 }
 
 .popup .close {
@@ -175,12 +193,26 @@
   text-decoration: none;
   color: #333;
 }
+
 .popup .close:hover {
   color: var(--color-primary);
 }
+
 .popup .content {
   max-height: 30%;
   overflow: auto;
+}
+
+.popup-login-size {
+  width: 30%;
+}
+
+.popup-signup-size {
+  width: 30%;
+}
+
+.bouton:hover{
+  cursor: pointer;
 }
 
 .card-actu {
@@ -295,8 +327,28 @@
   width: 100%;
 }
 
+.login-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form-row{
+  display: flex;
+  flex-direction: column;
+}
+
+#dropdown-login:hover{
+  cursor: pointer;
+}
+
+#dropdown-signup:hover{
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 600px){
-  .popup{
+  .popup-actu-size{
     width: 75%;
   }
 
@@ -310,7 +362,7 @@
 }
 
 @media only screen and (max-width: 600px){
-  .popup{
+  .popup-actu-size{
     width: 85%;
   }
   .rewards-container{
@@ -346,18 +398,45 @@
   .reward-container {
     width: 31%;
   }
+
+  .popup-login-size{
+    width: 33%;
+  }
+
+  .popup-signup-size{
+    width: 33%;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  .popup-login-size{
+    width: 43%;
+  }
+  .popup-signup-size{
+    width: 43%;
+  }
 }
 
 @media only screen and (max-width: 800px){
   .reward-container {
     width: 45%;
   }
+
   #stats-size{
     flex-direction: column;
     align-items: center;
   }
+
   .stats-games {
     width: 85%;
+  }
+
+  .popup-login-size{
+    width: 50%;
+  }
+  
+  .popup-signup-size{
+    width: 50%;
   }
 }
 
@@ -366,6 +445,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .stats-games {
     width: 85%;
   }
@@ -375,11 +455,20 @@
   .reward-container {
     width: 95%;
   }
+
   .div-reward-size {
     width: 50%;
   }
+
   .stats-games {
     width: 85%;
   }
 
+  .popup-login-size{
+    width: 80%;
+  }
+
+  .popup-signup-size{
+    width: 80%;
+  }
 }
