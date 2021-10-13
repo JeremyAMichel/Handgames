@@ -4,13 +4,7 @@ let divLogin = document.querySelector('#popup-login');
 let closeLogin = document.querySelector('#close-login');
 
 
-//variable signup
-let btnSignup = document.querySelector('.bouton-signup');
-let divSignup = document.querySelector('#popup-signup');
-let closeSignup = document.querySelector('#close-signup');
-
-
-//login
+//Make visible on click :
 
 btnLogin.addEventListener('click', (e)=>{
     MakeLoginVisible();
@@ -21,6 +15,9 @@ function MakeLoginVisible(){
     divLogin.classList.add("not-overlay");
 }
 
+
+//Hide in click :
+
 closeLogin.addEventListener('click', (e)=>{
     MakeLoginHidden();
 })
@@ -28,25 +25,4 @@ closeLogin.addEventListener('click', (e)=>{
 function MakeLoginHidden(){
     divLogin.classList.remove("not-overlay");
     divLogin.classList.add("overlay");
-}
-
-
-//signup
-
-btnSignup.addEventListener('click', (e)=>{
-    MakeSignupVisible();
-})
-
-function MakeSignupVisible(){
-    divSignup.classList.remove("overlay");
-    divSignup.classList.add("not-overlay");
-}
-
-closeSignup.addEventListener('click', (e)=>{
-    MakeSignupHidden();
-})
-
-function MakeSignupHidden(){
-    divSignup.classList.remove("not-overlay");
-    divSignup.classList.add("overlay");
 }
