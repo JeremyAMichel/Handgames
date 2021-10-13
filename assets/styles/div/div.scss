@@ -201,12 +201,10 @@
 
 .popup-login-size {
   width: 30%;
-  max-height: 65%;
 }
 
 .popup-signup-size {
   width: 30%;
-  max-height: 65%;
 }
 
 .bouton:hover{
@@ -332,6 +330,19 @@
   align-items: center;
 }
 
+.register-form-row{
+  display: flex;
+  flex-direction: column;
+}
+
+#dropdown-login:hover{
+  cursor: pointer;
+}
+
+#dropdown-signup:hover{
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 600px){
   .popup-actu-size{
     width: 75%;
@@ -383,18 +394,45 @@
   .reward-container {
     width: 31%;
   }
+
+  .popup-login-size{
+    width: 33%;
+  }
+
+  .popup-signup-size{
+    width: 33%;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  .popup-login-size{
+    width: 43%;
+  }
+  .popup-signup-size{
+    width: 43%;
+  }
 }
 
 @media only screen and (max-width: 800px){
   .reward-container {
     width: 45%;
   }
+
   #stats-size{
     flex-direction: column;
     align-items: center;
   }
+
   .stats-games {
     width: 85%;
+  }
+
+  .popup-login-size{
+    width: 50%;
+  }
+  
+  .popup-signup-size{
+    width: 50%;
   }
 }
 
@@ -403,6 +441,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .stats-games {
     width: 85%;
   }
@@ -412,11 +451,20 @@
   .reward-container {
     width: 95%;
   }
+
   .div-reward-size {
     width: 50%;
   }
+
   .stats-games {
     width: 85%;
   }
 
+  .popup-login-size{
+    width: 80%;
+  }
+
+  .popup-signup-size{
+    width: 80%;
+  }
 }

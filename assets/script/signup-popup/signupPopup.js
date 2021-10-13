@@ -3,10 +3,16 @@ let btnSignup = document.querySelector('.bouton-signup');
 let divSignup = document.querySelector('#popup-signup');
 let closeSignup = document.querySelector('#close-signup');
 
+//variable dropdown PETIT ECRAN
+let dropdownSignup = document.querySelector('#dropdown-signup');
 
 //Make visible on click :
 
 btnSignup.addEventListener('click', (e)=>{
+    MakeSignupVisible();
+})
+
+dropdownSignup.addEventListener('click', (e)=>{
     MakeSignupVisible();
 })
 

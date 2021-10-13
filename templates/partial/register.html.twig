@@ -2,17 +2,25 @@
     <div class="alert alert-danger" role="alert">{{ flashError }}</div>
 {% endfor %}
 
-<h1>Register</h1>
-
 {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, {
-        label: 'Password'
-    }) }}
-    {{ form_row(registrationForm.pseudo, {
-        label: 'Pseudo'
-    }) }}
+    <div class="register-form-row mb-2">
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email) }}
+    </div>
+
+    <div class="register-form-row mb-2">
+        <label for="registration_form_plainPassword" class="required">Password</label>
+        {{ form_widget(registrationForm.plainPassword) }}
+    </div>
+
+    <div class="register-form-row mb-2">
+        <label for="registration_form_pseudo" class="required">Pseudo</label>
+        {{ form_widget(registrationForm.pseudo) }}
+    </div>
+
     {{ form_row(registrationForm.agreeTerms) }}
 
-    <button type="submit" class="btn">Register</button>
+    <div class="login-btn">
+        <button type="submit" class="btn btn-lg btn-primary">Register</button>
+    </div>
 {{ form_end(registrationForm) }}

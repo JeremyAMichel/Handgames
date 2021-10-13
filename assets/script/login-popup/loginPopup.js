@@ -3,6 +3,8 @@ let btnLogin = document.querySelector('.bouton-login');
 let divLogin = document.querySelector('#popup-login');
 let closeLogin = document.querySelector('#close-login');
 
+//variable dropdown PETIT ECRAN
+let dropdownLogin = document.querySelector('#dropdown-login');
 
 //Make visible on click :
 
@@ -10,9 +12,13 @@ btnLogin.addEventListener('click', (e)=>{
     MakeLoginVisible();
 })
 
+dropdownLogin.addEventListener('click', (e)=>{
+    MakeLoginVisible();
+})
+
 function MakeLoginVisible(){
-    divLogin.classList.remove("overlay");
-    divLogin.classList.add("not-overlay");
+    divLogin.classList.remove('overlay');
+    divLogin.classList.add('not-overlay');
 }
 
 
@@ -23,6 +29,6 @@ closeLogin.addEventListener('click', (e)=>{
 })
 
 function MakeLoginHidden(){
-    divLogin.classList.remove("not-overlay");
-    divLogin.classList.add("overlay");
+    divLogin.classList.remove('not-overlay');
+    divLogin.classList.add('overlay');
 }
