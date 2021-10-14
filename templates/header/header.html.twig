@@ -11,8 +11,32 @@
             </a>
             
             <div class="login-signup-div">
-                <a href="{{ path('app_login') }}" class="bouton-login bouton">Login</a>
-                <a href="{{ path('app_register') }}" class="bouton-signup bouton">Signup</a>
+                <div class="bouton-login bouton">Login</div>
+                <div class="bouton-signup bouton">Signup</div>
+            </div>
+
+            <div id="popup-login" class="overlay">
+                <div class="close-popup close-popup-login"></div>
+                <div class="popup popup-login-size">
+                    <h2>Welcome</h2>
+                    <div id="close-login" class="close">&times;</div>
+                    <hr class="bg-dark border-2 border-top border-dark mb-3">
+                    <div>
+                        {{ loginFormRender()|raw }}
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup-signup" class="overlay">
+                <div class="close-popup close-popup-signup"></div>
+                <div class="popup popup-signup-size">
+                    <h2>Signup</h2>
+                    <div id="close-signup" class="close">&times;</div>
+                    <hr class="bg-dark border-2 border-top border-dark mb-3">
+                    <div>
+                        {{ signupFormRender()|raw }}
+                    </div>
+                </div>
             </div>
             
 
@@ -28,8 +52,8 @@
                     </svg>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Login</a></li>
-                    <li><a class="dropdown-item" href="#">Signup</a></li>
+                    <li><div id="dropdown-login" class="dropdown-item">Login</div></li>
+                    <li><div id="dropdown-signup" class="dropdown-item">Signup</div></li>
                 </ul>
             </div>
         </div>

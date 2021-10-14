@@ -10,15 +10,18 @@
     </div>
 {#    {% endif %}#}
 
-    <div class="card-body">
+    <div class="card-body actu-body">
         <p class="card-text">actualite.description_courte</p>
-        <a href="#popup1" class="bouton-login bouton">More info</a>
+        <div class="w-100 d-flex justify-content-center">
+            <div class="bouton-actu bouton">More info</div>
+        </div>
     </div>
 
-    <div id="popup1" class="overlay">
-        <div class="popup">
+    <div class="overlay overlay-actu">
+        <div class="close-popup close-popup-actu"></div>
+        <div class="popup popup-actu-size">
             <h2>actu.titre</h2>
-            <a class="close" href="#">&times;</a>
+            <div class="close close-actu">&times;</div>
             <div class="desc-longue">
                 <p>Actualite.description
                     What is Lorem Ipsum?
