@@ -2,9 +2,13 @@ let actuButtons = document.querySelectorAll('.bouton-actu');
 let actuOverlays = document.querySelectorAll('.overlay-actu');
 let actuCloses = document.querySelectorAll('.close-actu');
 
+//when you click outside the news popup
+let actuCloseDivs = document.querySelectorAll('.close-popup-actu');
+
 let actuButtonCount = 1;
 let actuOverlayCount = 1;
 let actuCloseCount = 1;
+let actuCloseDivCount = 1;
 
 
 //data-attribute which will allow you to open only the popup that the button concerns
@@ -23,6 +27,12 @@ actuOverlays.forEach( actuOverlay=>{
 actuCloses.forEach( actuClose =>{
     actuClose.setAttribute('data-actu-id','actu-'+actuCloseCount);
     actuCloseCount++;
+})
+
+//data-attribute which will allow you to close only the pop that is open when you click outside of it
+actuCloseDivs.forEach( actuCloseDiv =>{
+    actuCloseDiv.setAttribute('data-actu-id','actu-'+actuCloseDivCount);
+    actuCloseDivCount++;
 })
 
 
@@ -53,3 +63,10 @@ function makeActuHidden(id){
     actu.classList.add('overlay');
 }
 
+//event which will use the data-attribute to trigger the closing of the popup concerned
+// when you click outside of the popup
+actuCloseDivs.forEach( actuCloseDiv =>{
+    actuCloseDiv.addEventListener('click', (e)=>{
+        makeActuHidden(actuCloseDiv.getAttribute('data-actu-id'));
+    })
+})
