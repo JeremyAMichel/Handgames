@@ -290,14 +290,18 @@
   justify-content: center;
   width: 100%;
 }
+
 .carousel-shop {
   width: 100%;
 }
 
 
 .carousel-slides {
+  width: 100%;
   align-items: center;
   text-align: center;
+  transform-style: preserve-3d;
+  overflow: hidden;
 }
 
 
@@ -327,6 +331,11 @@
   padding: 10px;
   margin: 10px;
   transition : transformation .5s, opacité .5s, z-index .5s ;
+  display: none;
+}
+
+.carousel-slide.active{
+  display: block;
 }
 
 .carousel-slide:hover,
