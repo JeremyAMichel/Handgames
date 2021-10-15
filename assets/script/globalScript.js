@@ -4,7 +4,5 @@ import './login-popup/loginPopup';
 import './signup-popup/signupPopup';
 import './apply-bootstrap-class-on-register-form/applyBootstrapClassOnRegisterForm';
 import './actu-popup/actuPopup';
-import './actu-popup/actuPopup';
 import './carousel-shop/carouselShop';
-
-
+import './nav-submenu-not-hoverable-when-nav-not-active/navSubmenuNotHoverableWhenNavNotActive';
