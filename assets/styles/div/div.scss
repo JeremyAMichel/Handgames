@@ -366,6 +366,19 @@
   text-align: center;
   transform-style: preserve-3d;
   overflow: hidden;
+  flex-direction: row;
+}
+
+.carousel-slides .first{
+  order: 1;
+}
+
+.carousel-slides .mid{
+  order: 2;
+}
+
+.carousel-slides .last{
+  order: 3;
 }
 
 .carousel-arrows {
@@ -395,6 +408,7 @@
   margin: 10px;
   transition : transformation .5s, opacité .5s, z-index .5s ;
   display: none;
+  width: 33%;
 }
 
 .carousel-slide.active{
