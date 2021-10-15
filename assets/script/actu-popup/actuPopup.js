@@ -12,36 +12,51 @@ let actuCloseDivCount = 1;
 
 
 //data-attribute which will allow you to open only the popup that the button concerns
-actuButtons.forEach( actuButton =>{
-    actuButton.setAttribute('data-actu-id','actu-'+actuButtonCount);
-    actuButtonCount++;
-})
+if (typeof(actuButtons) != 'undefined' && actuButtons != null)
+{
+    actuButtons.forEach( actuButton =>{
+        actuButton.setAttribute('data-actu-id','actu-'+actuButtonCount);
+        actuButtonCount++;
+    })
+}
 
 //unique id to distinguish news popups from each other
-actuOverlays.forEach( actuOverlay=>{
-    actuOverlay.setAttribute('id','actu-'+actuOverlayCount);
-    actuOverlayCount++;
-})
+if (typeof(actuOverlays) != 'undefined' && actuOverlays != null)
+{
+    actuOverlays.forEach( actuOverlay=>{
+        actuOverlay.setAttribute('id','actu-'+actuOverlayCount);
+        actuOverlayCount++;
+    })
+}
 
 //data-attribute which will allow you to close only the popup that the cross button concerns
-actuCloses.forEach( actuClose =>{
-    actuClose.setAttribute('data-actu-id','actu-'+actuCloseCount);
-    actuCloseCount++;
-})
+if (typeof(actuCloses) != 'undefined' && actuCloses != null)
+{
+    actuCloses.forEach( actuClose =>{
+        actuClose.setAttribute('data-actu-id','actu-'+actuCloseCount);
+        actuCloseCount++;
+    })
+}
 
 //data-attribute which will allow you to close only the pop that is open when you click outside of it
-actuCloseDivs.forEach( actuCloseDiv =>{
-    actuCloseDiv.setAttribute('data-actu-id','actu-'+actuCloseDivCount);
-    actuCloseDivCount++;
-})
-
-
-//event which will use the data-attribute to trigger the opening of the concerned popup 
-actuButtons.forEach( actuButton =>{
-    actuButton.addEventListener('click' , (e)=>{
-        makeActuVisible(actuButton.getAttribute('data-actu-id'));
+if (typeof(actuCloseDivs) != 'undefined' && actuCloseDivs != null)
+{
+    actuCloseDivs.forEach( actuCloseDiv =>{
+        actuCloseDiv.setAttribute('data-actu-id','actu-'+actuCloseDivCount);
+        actuCloseDivCount++;
     })
-})
+}
+
+
+//event which will use the data-attribute to trigger the opening of the concerned popup
+if (typeof(actuButtons) != 'undefined' && actuButtons != null)
+{
+    actuButtons.forEach( actuButton =>{
+        actuButton.addEventListener('click' , (e)=>{
+            makeActuVisible(actuButton.getAttribute('data-actu-id'));
+        })
+    })
+}
 
 function makeActuVisible(id){
     let actu = document.querySelector('#'+id);
@@ -51,11 +66,14 @@ function makeActuVisible(id){
 
 
 //event which will use the data-attribute to trigger the closing of the popup concerned
-actuCloses.forEach( actuClose =>{
-    actuClose.addEventListener('click', (e)=>{
-        makeActuHidden(actuClose.getAttribute('data-actu-id'));
+if (typeof(actuCloses) != 'undefined' && actuCloses != null)
+{
+    actuCloses.forEach( actuClose =>{
+        actuClose.addEventListener('click', (e)=>{
+            makeActuHidden(actuClose.getAttribute('data-actu-id'));
+        })
     })
-})
+}
 
 function makeActuHidden(id){
     let actu = document.querySelector('#'+id);
@@ -65,8 +83,11 @@ function makeActuHidden(id){
 
 //event which will use the data-attribute to trigger the closing of the popup concerned
 // when you click outside of the popup
-actuCloseDivs.forEach( actuCloseDiv =>{
-    actuCloseDiv.addEventListener('click', (e)=>{
-        makeActuHidden(actuCloseDiv.getAttribute('data-actu-id'));
+if (typeof(actuCloseDivs) != 'undefined' && actuCloseDivs != null)
+{
+    actuCloseDivs.forEach( actuCloseDiv =>{
+        actuCloseDiv.addEventListener('click', (e)=>{
+            makeActuHidden(actuCloseDiv.getAttribute('data-actu-id'));
+        })
     })
-})
+}

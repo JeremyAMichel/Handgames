@@ -10,14 +10,19 @@ let divCloseLogin = document.querySelector('.close-popup-login');
 let dropdownLogin = document.querySelector('#dropdown-login');
 
 //Make visible on click :
+if (typeof(btnLogin) != 'undefined' && btnLogin != null)
+{
+    btnLogin.addEventListener('click', (e)=>{
+        MakeLoginVisible();
+    })
+}
 
-btnLogin.addEventListener('click', (e)=>{
-    MakeLoginVisible();
-})
-
-dropdownLogin.addEventListener('click', (e)=>{
-    MakeLoginVisible();
-})
+if (typeof(dropdownLogin) != 'undefined' && dropdownLogin != null)
+{
+    dropdownLogin.addEventListener('click', (e)=>{
+        MakeLoginVisible();
+    })
+}
 
 function MakeLoginVisible(){
     divLogin.classList.remove('overlay');
@@ -26,10 +31,12 @@ function MakeLoginVisible(){
 
 
 //Hide on click :
-
-closeLogin.addEventListener('click', (e)=>{
-    MakeLoginHidden();
-})
+if (typeof(closeLogin) != 'undefined' && closeLogin != null)
+{
+    closeLogin.addEventListener('click', (e)=>{
+        MakeLoginHidden();
+    })
+}
 
 function MakeLoginHidden(){
     divLogin.classList.remove('not-overlay');
@@ -38,7 +45,9 @@ function MakeLoginHidden(){
 
 
 //Hide on click outside the popup :
-
-divCloseLogin.addEventListener('click', (e)=>{
-    MakeLoginHidden();
-})
+if (typeof(divCloseLogin) != 'undefined' && divCloseLogin != null)
+{
+    divCloseLogin.addEventListener('click', (e)=>{
+        MakeLoginHidden();
+    })
+}

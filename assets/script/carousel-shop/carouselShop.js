@@ -1,8 +1,17 @@
 let carouselSlides = document.querySelectorAll('.carousel-slide');
 
-carouselSlides[0].classList.add('active');
-carouselSlides[1].classList.add('active');
-carouselSlides[2].classList.add('active');
+if (typeof(carouselSlides[0]) != 'undefined' && carouselSlides[0] != null)
+{
+    carouselSlides[0].classList.add('active');
+}
+if (typeof(carouselSlides[1]) != 'undefined' && carouselSlides[1] != null)
+{
+    carouselSlides[1].classList.add('active');
+}
+if (typeof(carouselSlides[2]) != 'undefined' && carouselSlides[2] != null)
+{
+    carouselSlides[2].classList.add('active');
+}
 
 let first = 0;
 let last = 2;
@@ -17,10 +26,13 @@ setNewTimer();
 
 
 //event fleche de droite
-nextArrow.addEventListener('click', (e)=>{
-    rollCarouselLeft(carouselSlides[first]);
-    setNewTimer();
-})
+if (typeof(nextArrow) != 'undefined' && nextArrow != null)
+{
+    nextArrow.addEventListener('click', (e)=>{
+        rollCarouselLeft(carouselSlides[first]);
+        setNewTimer();
+    })
+}
 
 function rollCarouselLeft(leftSlide){
     leftSlide.classList.remove('active');
@@ -41,10 +53,13 @@ function rollCarouselLeft(leftSlide){
 }
 
 //event fleche de gauche
-leftArrow.addEventListener('click', (e)=>{
-    rollCarouselRight(carouselSlides[last]);
-    setNewTimer();
-})
+if (typeof(leftArrow) != 'undefined' && leftArrow != null)
+{
+    leftArrow.addEventListener('click', (e)=>{
+        rollCarouselRight(carouselSlides[last]);
+        setNewTimer();
+    })
+}
 
 function rollCarouselRight(rightSlide){
     rightSlide.classList.remove('active');
@@ -66,13 +81,16 @@ function rollCarouselRight(rightSlide){
 
 //ajoute les classes permettant de déterminer l'ordre d'afficher des éléments du caroussel
 function addOrderClasses(first, last){
-    carouselSlides[first].classList.add('first');
-    carouselSlides[last].classList.add('last');
+    if (typeof(carouselSlides[first]) != 'undefined' && carouselSlides[first] != null)
+    {
+        carouselSlides[first].classList.add('first');
+        carouselSlides[last].classList.add('last');
 
-    let mid = first+1;
-    mid=biggerThanFive(mid);
+        let mid = first+1;
+        mid=biggerThanFive(mid);
 
-    carouselSlides[mid].classList.add('mid');
+        carouselSlides[mid].classList.add('mid');
+    }
 }
 
 //remove les classes permettant de déterminer l'ordre d'afficher des éléments du caroussel
@@ -114,6 +132,9 @@ function setNewTimer(){
 }
 
 function nextSlide(){
-    rollCarouselLeft(carouselSlides[first]);
+    if (typeof(carouselSlides[first]) != 'undefined' && carouselSlides[first] != null)
+    {
+        rollCarouselLeft(carouselSlides[first]);
+    }
 }
 
