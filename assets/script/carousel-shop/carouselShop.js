@@ -12,10 +12,14 @@ addOrderClasses(first, last);
 let nextArrow = document.querySelector('.next-carousel-shop');
 let leftArrow = document.querySelector('.previous-carousel-shop');
 
+let time = setInterval(nextSlide,7000);
+setNewTimer();
+
 
 //event fleche de droite
 nextArrow.addEventListener('click', (e)=>{
     rollCarouselLeft(carouselSlides[first]);
+    setNewTimer();
 })
 
 function rollCarouselLeft(leftSlide){
@@ -39,6 +43,7 @@ function rollCarouselLeft(leftSlide){
 //event fleche de gauche
 leftArrow.addEventListener('click', (e)=>{
     rollCarouselRight(carouselSlides[last]);
+    setNewTimer();
 })
 
 function rollCarouselRight(rightSlide){
@@ -98,3 +103,17 @@ function biggerThanFive(variable){
 
     return variable;
 }
+
+
+function setNewTimer(){
+    // if(typeof time !== 'undefined'){
+    clearInterval(time);
+    // }
+    time = setInterval(nextSlide,7000);
+    // return time;    
+}
+
+function nextSlide(){
+    rollCarouselLeft(carouselSlides[first]);
+}
+
