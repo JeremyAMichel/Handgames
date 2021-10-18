@@ -11,6 +11,7 @@
             </a>
             
             <div class="login-signup-div">
+            {# header if connected, else login button #}
                 {% if app.user %}
                     <div class="logged-global-div">
                         <div class="profil-pic-size me-3">
@@ -40,7 +41,7 @@
                 {% endif %}
             </div>
             
-
+            {# popup login #}
             <div id="popup-login" class="overlay">
                 <div class="close-popup close-popup-login"></div>
                 <div class="popup popup-login-size">
@@ -53,6 +54,7 @@
                 </div>
             </div>
 
+            {# popup signup #}
             <div id="popup-signup" class="overlay">
                 <div class="close-popup close-popup-signup"></div>
                 <div class="popup popup-signup-size">
@@ -65,7 +67,7 @@
                 </div>
             </div>
             
-
+            {# dropdown petits écran #}
             <div class="dropdown">
                 <a class="burger text-decoration-none" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                     <svg 
@@ -77,10 +79,38 @@
                         <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
                     </svg>
                 </a>
+                {# si utilisateur connecté : son pseudo, son lvl et possibilité de déco, sinon login et signup button #}
+                {% if app.user %}
+                    <div id="dropdown-lil-screen" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="logged-global-div">
+                            <div class="profil-pic-size mx-3">
+                                <img src="{{ app.user.avatar.path }}" alt="profil pic" width="100%" height="auto">
+                            </div>
+                            <div class="me-2">
+                                <div>
+                                    <span>{{ app.user.pseudo }}</span>
+                                </div>
+                                <div>
+                                    <span>level {{ currentUserLevel() }}</span>
+                                </div>
+                            </div>
+                            <div class="separator-header me-2"></div>
+                            <div>
+                                <div>
+                                    <span><a href="{{ path('app_logout') }}">click here</a></span>
+                                </div>
+                                <div>
+                                    <span><a href="{{ path('app_logout') }}">to disconnect</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><div id="dropdown-login" class="dropdown-item">Login</div></li>
                     <li><div id="dropdown-signup" class="dropdown-item">Signup</div></li>
                 </ul>
+                {% endif %}
             </div>
         </div>
 </header>
