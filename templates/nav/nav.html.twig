@@ -10,7 +10,7 @@
             </div>
         </li>
 
-
+        {# GAMES #}
         <li class="nav-item">
             <a href="{{ path('games') }}" class="real-nav-link">
                 <svg 
@@ -25,6 +25,7 @@
             </a>
         </li>
 
+        {# NEWS #}
         <li class="nav-item">
             <a href="{{ path('news') }}" class="real-nav-link">
                 <svg 
@@ -42,25 +43,26 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        {# PROFIL grand écran #}
+        <li id="profil-large-screen" class="nav-item">
             <div class="d-flex hovered-nav">
                 {% if app.user %}
-                <a href="{{ path('profilGeneral') }}" class="real-nav-link">
-                    <svg 
-                        aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
-                    </svg>
-                </a>
-                <div class="div-submenu">
-                    <a href="{{ path('profilGeneral') }}" class="nav-submenu-static">
-                        <span class="link-text">Profil</span>
+                    <a href="{{ path('profilGeneral') }}" class="real-nav-link">
+                        <svg 
+                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+                        </svg>
                     </a>
-                    <a href="{{ path('profilSkins') }}" class="nav-submenu-static">
-                        <span class="link-text">Skins</span>
-                    </a>
-                    <a href="{{ path('profilStats') }}" class="nav-submenu-static">
-                        <span class="link-text">Stats</span>
-                    </a>
-                </div>
+                    <div class="div-submenu">
+                        <a href="{{ path('profilGeneral') }}" class="nav-submenu-static">
+                            <span class="link-text">Profil</span>
+                        </a>
+                        <a href="{{ path('profilSkins') }}" class="nav-submenu-static">
+                            <span class="link-text">Skins</span>
+                        </a>
+                        <a href="{{ path('profilStats') }}" class="nav-submenu-static">
+                            <span class="link-text">Stats</span>
+                        </a>
+                    </div>
                 {% else %}
                     <div class="real-nav-link profilToLogin">
                         <svg 
@@ -83,6 +85,34 @@
             </div>
         </li>
 
+        {# PROFIL petit écran #}
+        <li id="profil-small-screen" class="nav-item">
+            <div class="d-flex hovered-nav position-relative">
+                {% if app.user %}
+                    <a id="profilSubmenu" class="real-nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                        <svg 
+                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+                        </svg>
+                    </a>
+                    
+                    <ul id="profil-small-screen-submenu" class="dropdown-menu position-absolute" aria-labelledby="profilSubmenu">
+                        <li><a href="{{ path('profilGeneral') }}" class="dropdown-item">Profil</a></li>
+                        <li><a href="{{ path('profilSkins') }}" class="dropdown-item">Skins</a></li>
+                        <li><a href="{{ path('profilStats') }}" class="dropdown-item">Stats</a></li>
+                    </ul>
+
+                {% else %}
+                    <div class="real-nav-link profilToLogin">
+                        <svg 
+                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+                        </svg>
+                    </div>
+                {% endif %}
+            </div>
+
+        </li>
+
+        {# SHOP #}
         <li class="nav-item">
             <a href="{{ path('shop') }}" class="real-nav-link">
                 <svg 

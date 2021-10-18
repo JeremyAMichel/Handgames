@@ -16,3 +16,20 @@
     background-color: black;
 }
 
+#profil-small-screen{
+    display: none;
+}
+
+#profil-small-screen:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+    #profil-small-screen{
+        display: flex;
+    }
+
+    #profil-large-screen{
+        display: none;
+    }
+}
