@@ -3,6 +3,8 @@ let btnLogin = document.querySelector('.bouton-login');
 let divLogin = document.querySelector('#popup-login');
 let closeLogin = document.querySelector('#close-login');
 
+let profilToLogs = document.querySelectorAll('.profilToLogin');
+
 //outside the popup
 let divCloseLogin = document.querySelector('.close-popup-login');
 
@@ -22,6 +24,16 @@ if (typeof(dropdownLogin) != 'undefined' && dropdownLogin != null)
     dropdownLogin.addEventListener('click', (e)=>{
         MakeLoginVisible();
     })
+}
+
+if (typeof(profilToLogs) != 'undefined' && profilToLogs != null)
+{
+    profilToLogs.forEach(profilToLog =>{
+        profilToLog.addEventListener('click', (e)=>{
+            MakeLoginVisible();
+        })
+    })
+    
 }
 
 function MakeLoginVisible(){
