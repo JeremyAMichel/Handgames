@@ -52,9 +52,17 @@ if (typeof(closeLogin) != 'undefined' && closeLogin != null)
 
 function MakeLoginHidden(){
     divLogin.classList.remove('not-overlay');
-    divLogin.classList.add('overlay');
+    divLogin.classList.add('not-overlay-temp');
+
+    let timeOut = setTimeout(function() {
+        addOverlayClassToLoginPopup(divLogin);
+    },600);
 }
 
+function addOverlayClassToLoginPopup(divLogin){
+    divLogin.classList.add('overlay');
+    divLogin.classList.remove('not-overlay-temp');
+}
 
 //Hide on click outside the popup :
 if (typeof(divCloseLogin) != 'undefined' && divCloseLogin != null)

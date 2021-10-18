@@ -40,8 +40,17 @@ if (typeof(closeSignup) != 'undefined' && closeSignup != null)
 }
 
 function MakeSignupHidden(){
-    divSignup.classList.remove("not-overlay");
-    divSignup.classList.add("overlay");
+    divSignup.classList.remove('not-overlay');
+    divSignup.classList.add('not-overlay-temp');
+
+    let timeOut = setTimeout(function() {
+        addOverlayClassToSignupPopup(divSignup);
+    },600);
+}
+
+function addOverlayClassToSignupPopup(divSignup){
+    divSignup.classList.add('overlay');
+    divSignup.classList.remove('not-overlay-temp');
 }
 
 //Hide on click outside the popup :

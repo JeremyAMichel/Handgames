@@ -77,8 +77,18 @@ if (typeof(actuCloses) != 'undefined' && actuCloses != null)
 
 function makeActuHidden(id){
     let actu = document.querySelector('#'+id);
+    
     actu.classList.remove('not-overlay');
+    actu.classList.add('not-overlay-temp');
+
+    let timeOut = setTimeout(function() {
+        addOverlayClassToActuPopup(actu);
+    },600);
+}
+
+function addOverlayClassToActuPopup(actu){
     actu.classList.add('overlay');
+    actu.classList.remove('not-overlay-temp');
 }
 
 //event which will use the data-attribute to trigger the closing of the popup concerned
