@@ -11,9 +11,35 @@
             </a>
             
             <div class="login-signup-div">
-                <div class="bouton-login bouton">Login</div>
-                <div class="bouton-signup bouton">Signup</div>
+                {% if app.user %}
+                    <div class="logged-global-div">
+                        <div class="profil-pic-size me-3">
+                            <img src="{{ app.user.avatar.path }}" alt="profil pic" width="100%" height="auto">
+                        </div>
+                        <div class="me-2">
+                            <div>
+                                <span>{{ app.user.pseudo }}</span>
+                            </div>
+                            <div>
+                                <span>level {{ currentUserLevel() }}</span>
+                            </div>
+                        </div>
+                        <div class="separator-header me-2"></div>
+                        <div>
+                            <div>
+                                <span>click <a href="{{ path('app_logout') }}">here</a></span>
+                            </div>
+                            <div>
+                                <span>to disconnect</span>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="bouton-login bouton">Login</div>
+                    <div class="bouton-signup bouton">Signup</div>
+                {% endif %}
             </div>
+            
 
             <div id="popup-login" class="overlay">
                 <div class="close-popup close-popup-login"></div>

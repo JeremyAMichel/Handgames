@@ -251,6 +251,12 @@
   border-left: 0.25px solid black;
 }
 
+.separator-header{
+  height: 40px;
+  width: 0.1px;
+  border-left: 0.25px solid black;
+}
+
 .group-profil-pic{
   display: flex;
   flex-direction: row;
@@ -425,6 +431,15 @@
   transition: all 1s ease-out;
   background: linear-gradient(45deg, rgba(188,118,81,1) 9%, rgba(195,166,160,0.5998774509803921) 91%);
 
+}
+
+.logged-global-div{
+  display: flex;
+  align-items: center;
+}
+
+.profil-pic-size{
+  width: 50px;
 }
 
 @media only screen and (min-width: 600px){

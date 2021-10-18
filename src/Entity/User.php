@@ -61,7 +61,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $bordures;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Statistique::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Statistique::class, inversedBy="users", cascade={"persist"})
      */
     private $statistiques;
 

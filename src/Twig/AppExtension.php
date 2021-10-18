@@ -2,12 +2,14 @@
 
 namespace App\Twig;
 
+use App\Entity\Statistique;
+use App\Repository\StatistiqueRepository;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\AvatarRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Twig\Environment;
@@ -61,9 +63,20 @@ class AppExtension extends AbstractExtension
      */
     private $passwordEncoder;
 
+    /**
+     * @var Security
+     */
+    private $security;
+
+    /**
+     * @var StatistiqueRepository
+     */
+    private $sr;
+
     public function __construct(Environment $twigEnvironment, AuthenticationUtils $authenticationUtils,
     FormFactoryInterface $formFactory, EntityManagerInterface $em, EmailVerifier $emailVerifier,
-     AvatarRepository $avatarRepository, RequestStack $request, UserPasswordEncoderInterface $passwordEncoder)
+     AvatarRepository $avatarRepository, RequestStack $request, UserPasswordEncoderInterface $passwordEncoder,
+     Security $security, StatistiqueRepository $sr)
     {
         $this->twigEnvironment=$twigEnvironment;
         $this->authenticationUtils=$authenticationUtils;
@@ -73,12 +86,15 @@ class AppExtension extends AbstractExtension
         $this->avatarRepository = $avatarRepository;
         $this->request=$request->getCurrentRequest();
         $this->passwordEncoder=$passwordEncoder;
+        $this->security = $security;
+        $this->sr = $sr;
     }
     
     public function getFunctions()
     {
         return [
             new TwigFunction('currentPage', [$this, 'currentPage']),
+            new TwigFunction('currentUserLevel', [$this, 'currentUserLevel']),
             new TwigFunction('loginFormRender', [$this, 'loginFormRender']),
             new TwigFunction('signupFormRender', [$this, 'signupFormRender']),
         ];
@@ -87,6 +103,29 @@ class AppExtension extends AbstractExtension
     public function currentPage()
     {
         return $_SERVER['REQUEST_URI'];
+    }
+
+    public function currentUserLevel()
+    {
+        /**
+        * @var User
+        */
+        $user = $this->security->getUser();
+
+        if(null==($user->getStatistiques()[0])){
+            $stats = new Statistique();
+            $stats->setLevel(1);
+            $stats->setNbrLose(0);
+            $stats->setNbrWin(0);
+            $stats->setNbrPartie(0);
+
+            $stats->addUser($user);
+
+            $this->em->persist($user);
+            $this->em->flush();
+        }
+
+        return $user->getStatistiques()[0]->getLevel();
     }
 
     public function loginFormRender()
