@@ -648,3 +648,9 @@
     display: flex;
   }
 }
+
+@media only screen and (max-width: 1200px){
+  #mediaResponsive {
+    display: none !important;
+  }
+}
