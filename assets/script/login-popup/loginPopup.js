@@ -3,6 +3,8 @@ let btnLogin = document.querySelector('.bouton-login');
 let divLogin = document.querySelector('#popup-login');
 let closeLogin = document.querySelector('#close-login');
 
+let profilToLogs = document.querySelectorAll('.profilToLogin');
+
 //outside the popup
 let divCloseLogin = document.querySelector('.close-popup-login');
 
@@ -24,6 +26,16 @@ if (typeof(dropdownLogin) != 'undefined' && dropdownLogin != null)
     })
 }
 
+if (typeof(profilToLogs) != 'undefined' && profilToLogs != null)
+{
+    profilToLogs.forEach(profilToLog =>{
+        profilToLog.addEventListener('click', (e)=>{
+            MakeLoginVisible();
+        })
+    })
+    
+}
+
 function MakeLoginVisible(){
     divLogin.classList.remove('overlay');
     divLogin.classList.add('not-overlay');
@@ -40,9 +52,17 @@ if (typeof(closeLogin) != 'undefined' && closeLogin != null)
 
 function MakeLoginHidden(){
     divLogin.classList.remove('not-overlay');
-    divLogin.classList.add('overlay');
+    divLogin.classList.add('not-overlay-temp');
+
+    let timeOut = setTimeout(function() {
+        addOverlayClassToLoginPopup(divLogin);
+    },600);
 }
 
+function addOverlayClassToLoginPopup(divLogin){
+    divLogin.classList.add('overlay');
+    divLogin.classList.remove('not-overlay-temp');
+}
 
 //Hide on click outside the popup :
 if (typeof(divCloseLogin) != 'undefined' && divCloseLogin != null)

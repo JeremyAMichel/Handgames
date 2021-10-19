@@ -35,7 +35,7 @@ class Statistique
     private $nbrLose;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="statistiques")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="statistiques", cascade={"persist"})
      */
     private $users;
 

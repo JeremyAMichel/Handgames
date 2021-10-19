@@ -142,14 +142,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity var(--transition-speed);
   visibility: hidden;
   opacity: 0;
-}
-
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
 }
 
 .not-overlay {
@@ -158,10 +154,23 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   transition: opacity var(--transition-speed);
   visibility: visible;
   opacity: 1;
+  z-index: 1;
+}
+
+.not-overlay-temp {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity var(--transition-speed);
+  visibility: visible;
+  opacity: 0;
   z-index: 1;
 }
 
@@ -224,6 +233,10 @@
   cursor: pointer;
 }
 
+.profilToLogin{
+  cursor: pointer;
+}
+
 .card-actu {
   border: 4px groove var(--color-primary);
   border-radius: 40px 40px 40px 40px;
@@ -243,6 +256,12 @@
 
 .separator{
   height: 100%;
+  width: 0.1px;
+  border-left: 0.25px solid black;
+}
+
+.separator-header{
+  height: 40px;
   width: 0.1px;
   border-left: 0.25px solid black;
 }
@@ -447,6 +466,23 @@
   transition: all 1s ease-out;
   background: linear-gradient(45deg, rgba(188,118,81,1) 9%, rgba(195,166,160,0.5998774509803921) 91%);
 
+}
+
+.logged-global-div{
+  display: flex;
+  align-items: center;
+}
+
+.profil-pic-size{
+  width: 50px;
+}
+
+#dropdown-lil-screen{
+  width: 250px;
+}
+
+#profil-small-screen-submenu{
+  top: -110px;
 }
 
 #carousel-shop-large-screen {
