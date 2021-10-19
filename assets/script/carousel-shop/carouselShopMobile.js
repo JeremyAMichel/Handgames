@@ -13,6 +13,8 @@ let leftArrowMobile = document.querySelector('.previous-carousel-shop-mobile');
 let timeMobile = setInterval(nextSlideMobile,7000);
 setNewTimerMobile();
 
+let timeAnimationMobile;
+let timeAnimationMobile2;
 
 //event fleche de droite
 if (typeof(nextArrowMobile) != 'undefined' && nextArrowMobile != null)
@@ -24,12 +26,24 @@ if (typeof(nextArrowMobile) != 'undefined' && nextArrowMobile != null)
 }
 
 function rollCarouselLeftMobile(activeSlide){
-    activeSlide.classList.remove('active');
+    // activeSlide.classList.remove('active');
+    activeSlide.classList.add('soon');
+
+    setAnimationTimeout1(activeSlide);
+    
     let orderNextMobile = activeSlideMobile+1;
 
-    orderNextMobile=biggerThanFiveMobile(orderNextMobile);
+    orderNextMobile = biggerThanFiveMobile(orderNextMobile);
 
-    carouselSlidesMobile[orderNextMobile].classList.add('active');
+    if(timeAnimationMobile2 != 'undefined'){
+        clearTimeout(timeAnimationMobile2);
+    }
+
+    timeAnimationMobile2 = setTimeout(function() {
+        activeNextSlide(carouselSlidesMobile[orderNextMobile]);
+    }, 500);
+
+    // carouselSlidesMobile[orderNextMobile].classList.add('active');
 
     activeSlideMobile++;
     activeSlideMobile=biggerThanFiveMobile(activeSlideMobile);
@@ -93,3 +107,21 @@ function nextSlideMobile(){
     }
 }
 
+function removeActiveAndSoonClasses(activeSlide){
+    activeSlide.classList.remove('soon');
+    activeSlide.classList.remove('active');
+}
+
+function activeNextSlide(nextSlide){
+    nextSlide.classList.add('active');
+}
+
+function setAnimationTimeout1(activeSlide){
+    if(timeAnimationMobile != 'undefined'){
+        clearTimeout(timeAnimationMobile);
+    }
+
+    timeAnimationMobile = setTimeout(function() {
+        removeActiveAndSoonClasses(activeSlide);
+    }, 500);
+}
