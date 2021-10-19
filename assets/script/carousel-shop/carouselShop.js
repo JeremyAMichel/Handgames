@@ -1,3 +1,4 @@
+
 let carouselSlides = document.querySelectorAll('.carousel-slide');
 
 if (typeof(carouselSlides[0]) != 'undefined' && carouselSlides[0] != null)
@@ -38,14 +39,14 @@ function rollCarouselLeft(leftSlide){
     leftSlide.classList.remove('active');
     removeOrderClasses(first, last);
     let orderNext = last+1;
-    
+
     orderNext=biggerThanFive(orderNext);
-    
+
     carouselSlides[orderNext].classList.add('active');
 
     first++;
     first=biggerThanFive(first);
-    
+
     last++;
     last=biggerThanFive(last);
 
@@ -65,14 +66,14 @@ function rollCarouselRight(rightSlide){
     rightSlide.classList.remove('active');
     removeOrderClasses(first, last);
     let orderPrev = first-1;
-    
+
     orderPrev=lessThanZero(orderPrev);
 
     carouselSlides[orderPrev].classList.add('active');
 
     first--;
     first=lessThanZero(first);
-    
+
     last--;
     last=lessThanZero(last);
 
@@ -128,7 +129,7 @@ function setNewTimer(){
     clearInterval(time);
     // }
     time = setInterval(nextSlide,7000);
-    // return time;    
+    // return time;
 }
 
 function nextSlide(){

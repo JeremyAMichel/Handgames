@@ -358,6 +358,7 @@
 
 .carousel-shop {
   width: 100%;
+
 }
 
 .carousel-slides {
@@ -398,6 +399,17 @@
   transform: translate(50%, -100%);
 }
 
+.previous-carousel-shop-mobile {
+  left: -40px;
+  transform: translate(-50%, -100%);
+
+}
+
+.next-carousel-shop-mobile {
+  right: -40px;
+  transform: translate(50%, -100%);
+}
+
 
 .carousel-slide {
   -webkit-box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.3);
@@ -411,16 +423,38 @@
   width: 33%;
 }
 
-.carousel-slide.active{
+.carousel-slide-mobile{
+  -webkit-box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.3);
+  -moz-box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  transition : transformation .5s, opacité .5s, z-index .5s ;
+  display: none;
+  width: 95%;
+}
+
+.carousel-slide.active, .carousel-slide-mobile.active{
   display: block;
 }
 
 .carousel-slide:hover,
-.carousel-slide:focus {
+.carousel-slide:focus,
+.carousel-slide-mobile:hover,
+.carousel-slide-mobile:focus{
   cursor: pointer;
   transition: all 1s ease-out;
   background: linear-gradient(45deg, rgba(188,118,81,1) 9%, rgba(195,166,160,0.5998774509803921) 91%);
 
+}
+
+#carousel-shop-large-screen {
+  display: flex;
+}
+
+#carousel-shop-mobile-screen {
+  display: none;
 }
 
 @media only screen and (min-width: 600px){
@@ -435,6 +469,10 @@
   .img-display{
     margin-right: 1rem;
   }
+  .carousel-arrows {
+    width:30px;
+    height:30px;
+  }
 }
 
 @media only screen and (max-width: 600px){
@@ -444,6 +482,10 @@
   .rewards-container{
     flex-direction: column;
     align-items: center;
+  }
+  .carousel-arrows {
+    width:30px;
+    height:30px;
   }
 }
 
@@ -546,5 +588,27 @@
 
   .popup-signup-size{
     width: 80%;
+  }
+}
+@media only screen and (min-width: 990px){
+  .carousel-shop {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1100px){
+  .carousel-arrows {
+    width:50px;
+    height:50px;
+  }
+}
+
+
+@media only screen and (max-width: 1000px){
+  #carousel-shop-large-screen {
+    display: none;
+  }
+  #carousel-shop-mobile-screen {
+    display: flex;
   }
 }
