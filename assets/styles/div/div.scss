@@ -241,7 +241,9 @@
   border: 4px groove var(--color-primary);
   border-radius: 40px 40px 40px 40px;
 }
-
+.card-body {
+  font-weight: bold;
+}
 .img-display {
   height: 100%;
   width: auto;

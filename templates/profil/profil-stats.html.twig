@@ -14,19 +14,19 @@
                 <div class="avatar-stats mb-5">
                 </div>
             </div>
-            <p class="level-stats mb-5">Level statistique.level</p>
+            <p class="level-stats mb-5">Level : {{ app.user.statistiques[0].level }}</p>
         </div>
 
         <div class="row mb-5">
             <div id="stats-size" class="col-12 d-flex justify-content-center">
                 <div class=" stats-games stats-win">
-                    <p class="stats-center">statistique.nbrWin wins</p>
+                    <p class="stats-center">WIN {{ app.user.statistiques[0].nbrWin }}</p>
                 </div>
                 <div class=" stats-games stats-lose">
-                    <p class="stats-center">statistique.nbrLose loses</p>
+                    <p class="stats-center">LOSE {{ app.user.statistiques[0].nbrLose }}</p>
                 </div>
                 <div class=" stats-games stats-total">
-                    <p class="stats-center">statistique.nbrPartie total party</p>
+                    <p class="stats-center">TOTAL GAMES {{ app.user.statistiques[0].nbrPartie }}</p>
                 </div>
             </div>
         </div>

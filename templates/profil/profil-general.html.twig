@@ -11,40 +11,26 @@
 <section class="section-photo-profil mb-5">
 
     <div class="img-display">
-        <img id="pp-display" src="https://i.redd.it/s0u1qmhwg6c21.jpg" alt="pp-xbox" height="100%">
+        <img id="pp-display" src="{{ app.user.avatar.path }}" alt="pp-user" height="100%">
     </div>
 
     <div class="separator"></div>
 
     <div class="profil-pic-choice">
         <div class="group-profil-pic">
-            <div class="img-choice">
-                <img src="https://i.redd.it/s0u1qmhwg6c21.jpg" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
-            <div class="img-choice">
-                <img src="https://pbs.twimg.com/media/EJ0BSc7XsAEpIKR.jpg" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
-            <div class="img-choice">
-                <img src="https://i.redd.it/cm7v4jwetbt21.png" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
-            <div class="img-choice">
-                <img src="https://pbs.twimg.com/media/EJ0BSc7XsAEpIKR.jpg" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
+            {% for avatar in firstAvatarGroup %}
+                <div class="img-choice">
+                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice">
+                </div>
+            {% endfor %}
         </div>
 
         <div class="group-profil-pic">
-            <div class="img-choice">
-                <img src="https://i.redd.it/s0u1qmhwg6c21.jpg" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
-            <div class="img-choice">
-                <img src="https://pbs.twimg.com/media/EJ0BSc7XsAEpIKR.jpg" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
-            <div class="img-choice">
-                <img src="https://i.redd.it/cm7v4jwetbt21.png" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
-            <div class="img-choice">
-                <img src="https://pbs.twimg.com/media/EJ0BSc7XsAEpIKR.jpg" alt="pp-xbox" width="100%" class="js-choice">
-            </div>
+            {% for avatar in secondAvatarGroup %}
+                <div class="img-choice">
+                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice">
+                </div>
+            {% endfor %}
         </div>
     </div>
 
