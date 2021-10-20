@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Avatar;
+use App\Entity\Trophee;
 use App\Repository\AvatarRepository;
 use App\Repository\StatistiqueRepository;
+use App\Repository\TropheeRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,13 +32,18 @@ class ProfilController extends AbstractController
      */
     private $sr;
 
+    /**
+     * @var TropheeRepository
+     */
+    private $tr;
 
 
-    public function __construct(EntityManagerInterface $em, AvatarRepository $ar, StatistiqueRepository $sr)
+    public function __construct(EntityManagerInterface $em, AvatarRepository $ar, StatistiqueRepository $sr, TropheeRepository $tr)
     {
         $this->em=$em;
         $this->ar=$ar;
         $this->sr=$sr;
+        $this->tr=$tr;
 
     }
    
@@ -137,7 +144,7 @@ class ProfilController extends AbstractController
      */
     public function profilStats(): Response
     {
-
+        $trophees = $this->tr->findAll();
         return $this->render('profil/profil-stats.html.twig', [
         ]);
     }

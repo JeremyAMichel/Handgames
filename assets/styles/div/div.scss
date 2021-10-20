@@ -238,8 +238,15 @@
 }
 
 .card-actu {
-  border: 4px groove var(--color-primary);
-  border-radius: 40px 40px 40px 40px;
+  border-radius: 15px;
+  background:no-repeat center/100% url("../../image/actu/bg-parchemin2.jpg");
+  flex-direction: column;
+}
+
+.img-actu {
+
+  justify-content: center;
+
 }
 .card-body {
   font-weight: bold;
@@ -331,23 +338,27 @@
 }
 
 .card-content-reward {
-  background: var(--color-primary);
-  margin: 10px;
+  margin: 5px;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   transition: var(--transition-speed);
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height:100%;
+  border: 2px solid black;
 }
 
 .div-reward-size {
-  width: 85%;
+  width: 50%;
+  margin-bottom: 20px;
 }
 
 .reward-container {
-  width: 22%;
+  width: 25%;
 }
 
 .rewards-container {
@@ -610,10 +621,6 @@
 @media only screen and (max-width: 600px){
   .reward-container {
     width: 95%;
-  }
-
-  .div-reward-size {
-    width: 50%;
   }
 
   .stats-games {

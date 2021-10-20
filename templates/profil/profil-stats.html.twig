@@ -20,13 +20,13 @@
         <div class="row mb-5">
             <div id="stats-size" class="col-12 d-flex justify-content-center">
                 <div class=" stats-games stats-win">
-                    <p class="stats-center">WIN {{ app.user.statistiques[0].nbrWin }}</p>
+                    <p class="stats-center">WIN : {{ app.user.statistiques[0].nbrWin }}</p>
                 </div>
                 <div class=" stats-games stats-lose">
-                    <p class="stats-center">LOSE {{ app.user.statistiques[0].nbrLose }}</p>
+                    <p class="stats-center">LOSE : {{ app.user.statistiques[0].nbrLose }}</p>
                 </div>
                 <div class=" stats-games stats-total">
-                    <p class="stats-center">TOTAL GAMES {{ app.user.statistiques[0].nbrPartie }}</p>
+                    <p class="stats-center">TOTAL GAMES: {{ app.user.statistiques[0].nbrPartie }}</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="rewards-container">
-            {% for i in 0..15 %}
+            {% for trophee in app.user.trophees %}
                 <div class="reward-container">
                     {% include 'partial/trophee.html.twig' %}
                 </div>
