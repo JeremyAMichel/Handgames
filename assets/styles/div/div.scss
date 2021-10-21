@@ -459,15 +459,32 @@
   display: none;
   width: 100%;
   opacity: 1;
+  position: absolute;
 }
 
 .carousel-slide.active, .carousel-slide-mobile.active{
   display: block;
+  position: relative;
+  z-index: 800;
 }
 
 .carousel-slide-mobile.active.soon{
-  transform: translateX(-200px);
+  transform: translateX(-300px);
   opacity: 0;
+}
+
+.carousel-slide-mobile.next{
+  transition : transform .5s, opacity .5s, z-index .5s ;
+  transform: translateX(300px);
+  z-index: 800;
+  display: block;
+  
+}
+
+.carousel-slide-mobile.next.active{
+  transition : transform .5s, opacity .5s, z-index .5s ;
+  transform: translateX(0px);
+  position: absolute;
 }
 
 .carousel-slide:hover,
