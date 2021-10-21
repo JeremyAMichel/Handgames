@@ -26,7 +26,6 @@ class ProfilController extends AbstractController
      */
     private $ar;
 
-
     /**
      * @var StatistiqueRepository
      */

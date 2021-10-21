@@ -17,4 +17,5 @@ class GameController extends AbstractController
             
         ]);
     }
+
 }
