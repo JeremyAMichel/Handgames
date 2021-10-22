@@ -22,35 +22,77 @@ addOrderClasses(first, last);
 let nextArrow = document.querySelector('.next-carousel-shop');
 let leftArrow = document.querySelector('.previous-carousel-shop');
 
-let time = setInterval(nextSlide,7000);
+let time;
 setNewTimer();
+
+let timeAnimation;
+let timeAnimation2;
+let timeAnimation3;
+
+let isAnimationPc = false;
 
 
 //event fleche de droite
 if (typeof(nextArrow) != 'undefined' && nextArrow != null)
 {
     nextArrow.addEventListener('click', (e)=>{
+        if (isAnimationPc) {
+            return;
+        }
+        isAnimationPc = true;
+
         rollCarouselLeft(carouselSlides[first]);
         setNewTimer();
+
+        setTimeout(function() {
+            isAnimationPc = false;
+        }, 1000);
     })
 }
 
 function rollCarouselLeft(leftSlide){
-    leftSlide.classList.remove('active');
-    removeOrderClasses(first, last);
     let orderNext = last+1;
+    orderNext = biggerThanFive(orderNext);
 
-    orderNext=biggerThanFive(orderNext);
+    carouselSlides[orderNext].classList.add('next');
 
-    carouselSlides[orderNext].classList.add('active');
+    leftSlide.classList.add('soon');
+
+    let mid = first+1;
+    mid = biggerThanFive(mid);
+
+    carouselSlides[mid].classList.add('soon-alt');
+    carouselSlides[last].classList.add('soon-alt');
+
+    if(timeAnimation != 'undefined'){
+        clearTimeout(timeAnimation);
+    }
+
+    timeAnimation = setTimeout(function() {
+        removeActiveAndSoonClassesXL(leftSlide);
+    }, 1000);
+
+    if(timeAnimation2 != 'undefined'){
+        clearTimeout(timeAnimation2);
+    }
+
+    timeAnimation2 = setTimeout(function() {
+        changeOrders(leftSlide, carouselSlides[mid], carouselSlides[last], carouselSlides[orderNext]);
+    }, 500);
+
+    if(timeAnimation3 != 'undefined'){
+        clearTimeout(timeAnimation3);
+    }
+
+    timeAnimation3 = setTimeout(function() {
+        removeNextClassXL(carouselSlides[mid], carouselSlides[last], carouselSlides[orderNext]);
+    }, 1000);
 
     first++;
     first=biggerThanFive(first);
 
     last++;
     last=biggerThanFive(last);
-
-    addOrderClasses(first, last);
 }
 
 //event fleche de gauche
@@ -137,5 +179,32 @@ function nextSlide(){
     {
         rollCarouselLeft(carouselSlides[first]);
     }
+}
+
+function removeActiveAndSoonClassesXL(leftSlide){
+    leftSlide.classList.remove('soon');
+    leftSlide.classList.remove('active');
+}
+
+function changeOrders(leftSlide, midSlide, rightSlide, nextSlide){
+    leftSlide.classList.remove('first');
+
+    midSlide.classList.remove('mid');
+    midSlide.classList.add('first');
+
+    rightSlide.classList.remove('last');
+    rightSlide.classList.add('mid');
+
+    nextSlide.classList.add('last');
+    nextSlide.classList.add('active');
+}
+
+function removeNextClassXL(midSlide, rightSlide, nextSlide){
+    midSlide.classList.remove('soon-alt');
+
+    rightSlide.classList.remove('soon-alt');
+
+    nextSlide.classList.remove('next');
+    
 }
 
