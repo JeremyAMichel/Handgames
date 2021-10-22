@@ -27,23 +27,11 @@ class ProfilController extends AbstractController
     private $ar;
 
 
-    /**
-     * @var StatistiqueRepository
-     */
-    private $sr;
 
-    /**
-     * @var TropheeRepository
-     */
-    private $tr;
-
-
-    public function __construct(EntityManagerInterface $em, AvatarRepository $ar, StatistiqueRepository $sr, TropheeRepository $tr)
+    public function __construct(EntityManagerInterface $em, AvatarRepository $ar)
     {
         $this->em=$em;
         $this->ar=$ar;
-        $this->sr=$sr;
-        $this->tr=$tr;
 
     }
    
@@ -144,7 +132,6 @@ class ProfilController extends AbstractController
      */
     public function profilStats(): Response
     {
-        $trophees = $this->tr->findAll();
         return $this->render('profil/profil-stats.html.twig', [
         ]);
     }
