@@ -33,12 +33,11 @@ class HandBlackWhiteController extends AbstractController
 
 
     /**
-     * @Route("/games/handblackwhite", name="handblackwhite")
+     * @Route("/games/handblackwhite", name="hand_black_white")
      */
     public function HandBlackWhite(): Response
     {
         return $this->render('hand_black_white/hand_black_white.html.twig', [
-
         ]);
     }
 }
