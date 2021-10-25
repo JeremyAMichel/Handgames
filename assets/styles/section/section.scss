@@ -1,3 +1,11 @@
+.maxwidth{
+  width: 100%;
+}
+
+.maxwidth:hover > div:not(:hover){
+  width: 30%;
+}
+
 .quinconce-section{
   width: 100%;
   display: flex;
