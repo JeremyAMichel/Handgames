@@ -51,17 +51,24 @@ if (typeof(nextArrow) != 'undefined' && nextArrow != null)
 }
 
 function rollCarouselLeft(leftSlide){
+
+    rightSlide = carouselSlides[last];
+
     let orderNext = last+1;
     orderNext = biggerThanFive(orderNext);
 
     carouselSlides[orderNext].classList.add('next');
 
+    leftSlide.classList.add('smooth-trans');
     leftSlide.classList.add('soon');
 
     let mid = first+1;
     mid = biggerThanFive(mid);
 
+    carouselSlides[mid].classList.add('smooth-trans');
     carouselSlides[mid].classList.add('soon-alt');
+
+    carouselSlides[last].classList.add('smooth-trans');
     carouselSlides[last].classList.add('soon-alt');
 
     if(timeAnimation != 'undefined'){
@@ -69,7 +76,7 @@ function rollCarouselLeft(leftSlide){
     }
 
     timeAnimation = setTimeout(function() {
-        removeActiveAndSoonClassesXL(leftSlide);
+        removeActiveAndSoonAndNextClassesXL(leftSlide, carouselSlides[mid], rightSlide, carouselSlides[orderNext]);
     }, 1000);
 
     if(timeAnimation2 != 'undefined'){
@@ -77,22 +84,16 @@ function rollCarouselLeft(leftSlide){
     }
 
     timeAnimation2 = setTimeout(function() {
-        changeOrders(leftSlide, carouselSlides[mid], carouselSlides[last], carouselSlides[orderNext]);
+        changeOrders(leftSlide, carouselSlides[mid], rightSlide, carouselSlides[orderNext]);
     }, 500);
-
-    if(timeAnimation3 != 'undefined'){
-        clearTimeout(timeAnimation3);
-    }
-
-    timeAnimation3 = setTimeout(function() {
-        removeNextClassXL(carouselSlides[mid], carouselSlides[last], carouselSlides[orderNext]);
-    }, 1000);
 
     first++;
     first=biggerThanFive(first);
 
     last++;
     last=biggerThanFive(last);
+
+
 }
 
 //event fleche de gauche
@@ -177,13 +178,37 @@ function setNewTimer(){
 function nextSlide(){
     if (typeof(carouselSlides[first]) != 'undefined' && carouselSlides[first] != null)
     {
+        if (isAnimationPc) {
+            return;
+        }
+        isAnimationPc = true;
+
         rollCarouselLeft(carouselSlides[first]);
+
+        setTimeout(function() {
+            isAnimationPc = false;
+        }, 1000);
     }
 }
 
-function removeActiveAndSoonClassesXL(leftSlide){
+function removeActiveAndSoonAndNextClassesXL(leftSlide, midSlide, rightSlide, nextSlide){
     leftSlide.classList.remove('soon');
     leftSlide.classList.remove('active');
+
+    midSlide.classList.add('still');
+
+    rightSlide.classList.add('still');
+
+    midSlide.classList.remove('soon-alt');
+
+    rightSlide.classList.remove('soon-alt');
+
+    nextSlide.classList.remove('next');
+    nextSlide.classList.remove('smooth-trans');
+
+    midSlide.classList.remove('still');
+
+    rightSlide.classList.remove('still');
 }
 
 function changeOrders(leftSlide, midSlide, rightSlide, nextSlide){
@@ -196,7 +221,14 @@ function changeOrders(leftSlide, midSlide, rightSlide, nextSlide){
     rightSlide.classList.add('mid');
 
     nextSlide.classList.add('last');
+    nextSlide.classList.add('smooth-trans');
     nextSlide.classList.add('active');
+
+    //remove transitions so the caroussel don't look like bugged
+    leftSlide.classList.remove('smooth-trans');
+    midSlide.classList.remove('smooth-trans');
+    rightSlide.classList.remove('smooth-trans');
+    
 }
 
 function removeNextClassXL(midSlide, rightSlide, nextSlide){
