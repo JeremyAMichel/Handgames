@@ -521,14 +521,14 @@
 
 .carousel-slide.next{
   transition : transform .5s, opacity .5s, z-index .5s ;
-  transform: translateX(100%);
+  transform: translateX(200%);
   z-index: 800;
   display: block;
 }
 
 .carousel-slide.next.active{
   transition : transform .5s, opacity .5s, z-index .5s ;
-  transform: translateX(0px);
+  transform: translateX(110%);
   position: absolute;
 }
 
