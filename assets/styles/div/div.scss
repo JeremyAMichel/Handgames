@@ -538,30 +538,33 @@
   transition : transform .5s, opacity .5s, z-index .5s ;
 }
 
-/* //////////////////////  TODO  /////////////////////////// */
-
-/*
 .carousel-slide.prev{
-  transition : transform .5s, opacity .5s, z-index .5s ;
-  transform: translateX(-300px);
+  transform: translateX(-250%);
   z-index: 800;
-  display: block;
-  
+  display: block; 
 }
 
 .carousel-slide.active.prev-soon{
-  transform: translateX(300px);
+  transform: translateX(100%);
   opacity: 0;
 }
 
-.carousel-slide.prev.active{
-  transition : transform .5s, opacity .5s, z-index .5s ;
-  transform: translateX(0px);
-  position: absolute;
+.carousel-slide.active.prev-soon-alt{
+  transform: translateX(107%);
 }
-*/
 
-/* ///////////////////////////////////////////////// */
+.carousel-slide.active.prev-soon-alt.prev-still{
+  transform: translateX(52%);
+}
+
+.carousel-slide.prev.active{
+  transform: translateX(-108%);
+  position: absolute;
+  height: 94.5%;
+  width: 31%;
+}
+
+/* //////////////////////  TODO  /////////////////////////// */
 
 .carousel-slide:hover,
 .carousel-slide:focus,
