@@ -20,7 +20,7 @@
         <div class="group-profil-pic">
             {% for avatar in firstAvatarGroup %}
                 <div class="img-choice">
-                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice">
+                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice" data-id="{{ avatar.id }}">
                 </div>
             {% endfor %}
         </div>
@@ -28,7 +28,7 @@
         <div class="group-profil-pic">
             {% for avatar in secondAvatarGroup %}
                 <div class="img-choice">
-                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice">
+                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice" data-id="{{ avatar.id }}">
                 </div>
             {% endfor %}
         </div>
@@ -37,7 +37,8 @@
 </section>
 
 <div class="confirmation">
-    <a href="#" class="bouton-confirm">Confirm</a>
+    <a id="confirm-profil-pic" href="{{ path('profilPicChangeTreatment',{ 'idAvatar':app.user.avatar.id, 'idUser':app.user.id }) }}"
+     class="bouton-confirm">Confirm</a>
 </div>
 
 {% endblock %}

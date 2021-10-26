@@ -10,6 +10,7 @@ use App\Repository\TropheeRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,12 +27,18 @@ class ProfilController extends AbstractController
      */
     private $ar;
 
+    /**
+     * @var UserRepository
+     */
+    private $ur;
 
 
-    public function __construct(EntityManagerInterface $em, AvatarRepository $ar)
+
+    public function __construct(EntityManagerInterface $em, AvatarRepository $ar, UserRepository $ur)
     {
         $this->em=$em;
         $this->ar=$ar;
+        $this->ur=$ur;
 
     }
    
@@ -113,6 +120,23 @@ class ProfilController extends AbstractController
             'secondAvatarGroup'=>$secondAvatarGroup,
 
         ]);
+    }
+
+    /**
+     * @Route("/profil-general/{idAvatar}/{idUser}", name="profilPicChangeTreatment")
+     */
+    public function profilPicChangeTreatment(int $idAvatar, int $idUser): RedirectResponse
+    {
+        $user=$this->ur->find($idUser);
+        $avatar=$this->ar->find($idAvatar);
+
+        $user->setAvatar($avatar);
+
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $this->redirectToRoute('profilGeneral');
+
     }
 
     /**
