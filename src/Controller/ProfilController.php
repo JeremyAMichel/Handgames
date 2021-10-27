@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Avatar;
 use App\Entity\Trophee;
+use App\Entity\User;
+use App\Form\UserPseudoPwType;
 use App\Repository\AvatarRepository;
 use App\Repository\StatistiqueRepository;
 use App\Repository\TropheeRepository;
@@ -13,6 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ProfilController extends AbstractController
 {
@@ -32,22 +37,129 @@ class ProfilController extends AbstractController
      */
     private $ur;
 
+    /**
+     * @var Security
+     */
+    private $security;
 
 
-    public function __construct(EntityManagerInterface $em, AvatarRepository $ar, UserRepository $ur)
+
+    public function __construct(EntityManagerInterface $em, AvatarRepository $ar, UserRepository $ur,
+    Security $security)
     {
         $this->em=$em;
         $this->ar=$ar;
         $this->ur=$ur;
+        $this->security=$security;
 
     }
    
     /**
-     * @Route("/profil-general", name="profilGeneral")
+     * @Route("/profil-general/{error}", name="profilGeneral")
      */
-    public function profilGeneral(): Response
+    public function profilGeneral(Request $request, UserPasswordHasherInterface $passwordHasher,
+    $error=null): Response
     {
 
+        $this->createAvatarPaths();
+
+        $avatars = $this->ar->findAll();
+
+        $firstAvatarGroup = array_slice($avatars,0,4);
+        $secondAvatarGroup = array_slice($avatars,4);
+
+
+        /**
+         * @var User
+         */
+        $currentUser = $this->security->getUser();
+
+        $form = $this->createForm(UserPseudoPwType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data=$form->getData();
+            $isAction = 0;
+            //la photo de profil n'étant pas jugé comme étant une information sensible, aucune restriction 
+            //sur le changement
+            if($data['avatar']!==null){
+                if($data['avatar']!==($currentUser->getAvatar()->getId())){
+                    $currentUser->setAvatar($this->ar->find($data['avatar']));
+                    $this->em->persist($currentUser);
+                    $isAction++;    
+                }         
+            }
+
+            // si l'utilisateur veut changer son pseudo ou son mot de passe il doit renseigner l'ancien
+            if($data['newPassword']!==null || $data['pseudo']!==null){
+                if($data['oldPassword']!==null){
+                    //si l'ancien password est le même que celui qu'il a renseigné
+                    if($passwordHasher->isPasswordValid($currentUser,$data['oldPassword'])){
+                        // si il y a une valeur dans l'input new password
+                        if($data['newPassword']!==null){
+                            if(!$passwordHasher->isPasswordValid($currentUser,$data['newPassword'])){
+                                $currentUser->setPassword($passwordHasher->hashPassword($currentUser,$data['newPassword']));
+                                $isAction++;
+                                $this->em->persist($currentUser);
+                            }                           
+                        }
+                        // si il y a une valeur dans l'input pseudo
+                        if($data['pseudo']!==null){
+                            // si le pseudo n'est pas le même que l'utilisateur possède déjà
+                            if($data['pseudo']!==$currentUser->getPseudo()){
+                                $currentUser->setPseudo($data['pseudo']);
+                                $isAction++;
+                                $this->em->persist($currentUser);
+                            }                         
+                        }  
+
+                    }else{
+                        return $this->redirectToRoute('profilGeneral',['error'=>'badPassword']);
+                    }
+                       
+                }else{
+                    return $this->redirectToRoute('profilGeneral',['error'=>'noPassword']);
+                }
+                
+            }
+            
+            if($isAction!==0){
+                $this->em->flush();
+                return $this->redirectToRoute('profilGeneral');
+                // dump('on flush');
+            }        
+        }
+
+        return $this->render('profil/profil-general.html.twig', [
+            'firstAvatarGroup'=>$firstAvatarGroup,
+            'secondAvatarGroup'=>$secondAvatarGroup,
+            'form'=>$form->createView(),
+            'error'=>$error,
+        ]);
+    }
+
+    /**
+     * @Route("/profil-skins", name="profilSkins")
+     */
+    public function profilSkins(): Response
+    {
+        return $this->render('profil/profil-skins.html.twig', [
+        ]);
+    }
+    
+    /**
+     * @Route("/profil-stats", name="profilStats")
+     */
+    public function profilStats(): Response
+    {
+        return $this->render('profil/profil-stats.html.twig', [
+        ]);
+    }
+
+
+    //this is a temp function for dev working in local
+    private function createAvatarPaths()
+    {
         $avatars=$this->ar->findAll();
         if(count($avatars)!= 8){
             $firstAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/default-avatar.png']);
@@ -109,51 +221,5 @@ class ProfilController extends AbstractController
             $this->em->flush();
 
         }
-
-        $avatars = $this->ar->findAll();
-
-        $firstAvatarGroup = array_slice($avatars,0,4);
-        $secondAvatarGroup = array_slice($avatars,4);
-
-        return $this->render('profil/profil-general.html.twig', [
-            'firstAvatarGroup'=>$firstAvatarGroup,
-            'secondAvatarGroup'=>$secondAvatarGroup,
-
-        ]);
-    }
-
-    /**
-     * @Route("/profil-general/{idAvatar}/{idUser}", name="profilPicChangeTreatment")
-     */
-    public function profilPicChangeTreatment(int $idAvatar, int $idUser): RedirectResponse
-    {
-        $user=$this->ur->find($idUser);
-        $avatar=$this->ar->find($idAvatar);
-
-        $user->setAvatar($avatar);
-
-        $this->em->persist($user);
-        $this->em->flush();
-
-        return $this->redirectToRoute('profilGeneral');
-
-    }
-
-    /**
-     * @Route("/profil-skins", name="profilSkins")
-     */
-    public function profilSkins(): Response
-    {
-        return $this->render('profil/profil-skins.html.twig', [
-        ]);
-    }
-    
-    /**
-     * @Route("/profil-stats", name="profilStats")
-     */
-    public function profilStats(): Response
-    {
-        return $this->render('profil/profil-stats.html.twig', [
-        ]);
     }
 }

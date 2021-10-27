@@ -614,6 +614,12 @@
   display: none;
 }
 
+.customError{
+  display: flex;
+  position: absolute;
+  transform: translateY(-100%);
+}
+
 @media only screen and (min-width: 600px){
   .popup-actu-size{
     width: 75%;
