@@ -42,6 +42,7 @@ class Actualite
      */
     private $path_img;
 
+
     public function getId(): ?int
     {
         return $this->id;

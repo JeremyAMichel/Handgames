@@ -40,3 +40,4 @@ security:
         - { path: ^/profil-general, roles: ROLE_USER }
         - { path: ^/profil-skins, roles: ROLE_USER }
         - { path: ^/profil-stats, roles: ROLE_USER }
+
