@@ -33,12 +33,22 @@ class RockPaperScissorsController extends AbstractController
     }
 
     /**
-     * @Route("/games/rockpaperscissors", name="rock_paper_scissors")
+     * @Route("/games/rockpaperscissors/{mode}", name="rock_paper_scissors")
      */
-    public function RockPaperScissors(): Response
+    public function RockPaperScissors($mode = null): Response
     {
-        return $this->render('rock_paper_scissors/rock_paper_scissors.html.twig', [
+        if($mode == null){
+            return $this->render('rock_paper_scissors/rock_paper_scissors.html.twig', [
 
-        ]);
+            ]);
+        }
+        else{
+            if($mode == 'bot'){
+                return $this->render('rock_paper_scissors/bot.html.twig', [
+
+                ]);
+            }
+        }
+
     }
 }
