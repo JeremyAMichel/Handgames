@@ -110,8 +110,18 @@
 .burger:hover{
   color: black;
 }
+
 .btn-purchase {
   font-weight: bold;
+}
+
+.link-RPS-mode{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.918);
+}
+
+.link-RPS-mode:hover{
+  color: rgba(255, 255, 255, 0.918);
 }
 
 @media only screen and (max-width: 600px){

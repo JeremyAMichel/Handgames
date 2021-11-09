@@ -1,15 +1,41 @@
-#div-rps-bot:hover{
-  width: 70%;
-}
-
-#div-rps-player:hover{
+#div-rps-bot:hover,
+#div-rps-player:hover,
+#div-rps-friend:hover,
+#div-rps-ranked:hover
+{
   width: 70%;
 }
 
 .widthauto{
-  border: solid;
   transition: width 500ms;
   width: 100%;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.918);
+}
+
+.RPS-mode-border-top-left{
+  border: 1px solid black;
+  background-color: #A3A2A8;
+}
+
+.RPS-mode-border-top-right{
+ border-top: 1px solid black;
+ border-right: 1px solid black;
+ border-bottom: 1px solid black;
+ background-color: #d1bfa1;
+}
+
+.RPS-mode-border-bottom-left{
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #565161;
+}
+
+.RPS-mode-border-bottom-right{
+ border-right: 1px solid black;
+ border-bottom: 1px solid black;
+ background-color: #332C21;
 }
 
 #textGameCarousel{
