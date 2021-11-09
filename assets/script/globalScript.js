@@ -7,3 +7,4 @@ import './actu-popup/actuPopup';
 import './carousel-shop/carouselShop';
 import './nav-submenu-not-hoverable-when-nav-not-active/navSubmenuNotHoverableWhenNavNotActive';
 import './carousel-shop/carouselShopMobile';
+import './rock-paper-scissors/rockPaperScissorsBot';

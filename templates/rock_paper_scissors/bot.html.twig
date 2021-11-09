@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Handgames{% endblock %}
+
+{% block body %}
+    <div class="terrain-jeu gap-3 d-flex justify-content-center align-items-end position-relative">
+
+        <div class="zone-poing d-flex">
+            <div class="playerOne text-center">
+                <p>joueur 1</p>
+                <img src="/build/image/game/hand-rock.png" width="250px" height="auto">
+            </div>
+            <div class="playerTwo text-center">
+                <p>joueur 2</p>
+                <img src="/build/image/game/hand-rock.png" width="250px" height="auto">
+            </div>
+        </div>
+
+
+
+
+            <div class="rockdivbot d-flex">
+                <img
+                        src="/build/image/icons/hand-rock-solid.svg"
+                        alt=""
+                        height="100px"
+                        width="100px" />
+            </div>
+
+            <br>
+
+            <div class="paperdivbot">
+                <img
+                        src="/build/image/icons/hand-paper-solid.svg"
+                        alt=""
+                        height="100px"
+                        width="100px" />
+            </div>
+
+            <br>
+
+            <div class="scissorsdivbot">
+                <img
+                        src="/build/image/icons/hand-scissors-solid.svg"
+                        alt=""
+                        height="98px"
+                        width="98px" />
+            </div>
+
+    </div>
+
+{% endblock %}
