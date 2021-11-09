@@ -107,9 +107,14 @@ class ProfilController extends AbstractController
                         if($data['pseudo']!==null){
                             // si le pseudo n'est pas le même que l'utilisateur possède déjà
                             if($data['pseudo']!==$currentUser->getPseudo()){
-                                $currentUser->setPseudo($data['pseudo']);
-                                $isAction++;
-                                $this->em->persist($currentUser);
+                                // le pseudo est-il déjà utilisé par un autre utilisateur ?
+                                if(!$this->isPseudoAlreadyUsed($data['pseudo'])){
+                                    $currentUser->setPseudo($data['pseudo']);
+                                    $isAction++;
+                                    $this->em->persist($currentUser);
+                                }else{
+                                    return $this->redirectToRoute('profilGeneral',['error'=>'pseudoNotAvailable']);
+                                }                            
                             }                         
                         }  
 
@@ -154,6 +159,18 @@ class ProfilController extends AbstractController
     {
         return $this->render('profil/profil-stats.html.twig', [
         ]);
+    }
+
+
+    /////FUNCTION WITHOUT ROUTE HERE\\\\\
+
+    
+    private function isPseudoAlreadyUsed($pseudo)
+    {
+        $checkPseudo = $this->ur->findBy(['pseudo'=>$pseudo]);
+        if($checkPseudo!==[]){           
+            return true;
+        }
     }
 
 

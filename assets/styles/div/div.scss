@@ -659,6 +659,11 @@
   transform: translateY(-100%);
 }
 
+.form-input{
+  width: 100%;
+  margin-right: 1rem;
+}
+
 @media only screen and (min-width: 600px){
   .popup-actu-size{
     width: 75%;
@@ -688,6 +693,15 @@
   .carousel-arrows {
     width:30px;
     height:30px;
+  }
+
+  #div-pseudo-pw-form{
+    flex-direction: column;
+  }
+
+  .form-input{
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 }
 
