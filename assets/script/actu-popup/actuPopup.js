@@ -91,7 +91,7 @@ function addOverlayClassToActuPopup(actu){
     actu.classList.remove('not-overlay-temp');
 }
 
-//event which will use the data-attribute to trigger the closing of the popup concerned
+// event which will use the data-attribute to trigger the closing of the popup concerned
 // when you click outside of the popup
 if (typeof(actuCloseDivs) != 'undefined' && actuCloseDivs != null)
 {

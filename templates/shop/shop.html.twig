@@ -7,6 +7,7 @@
         <h2>Shop</h2>
     </div>
 
+    {# ||||||||||||||||||||||||||||||||||||||| CAROUSEL GRAND ECRAN ||||||||||||||||||||||||||||||||||||| #}
     <div id="carousel-shop-large-screen" class="w-100 justify-content-center">
         <div class="carousel-shop position-relative">
             <div class="carousel-slides d-flex">
@@ -19,7 +20,6 @@
                              width="95%">
                         <p class="skin-name">Nom du Skin</p>
                         <p class="skin-price">Prix du Skin</p>
-                        <a href="#" class="btn btn-outline-success btn-purchase">Purchase now</a>
                     </div>
                 {% endfor %}
             </div>
@@ -44,8 +44,10 @@
 
     </div>
 
+
+    {# ||||||||||||||||||||||||||||||||||||||| CAROUSEL PETIT ECRAN ||||||||||||||||||||||||||||||||||||| #}
     <div id="carousel-shop-mobile-screen" class="w-100 justify-content-center">
-        <div class="carousel-shop position-relative">
+        <div class="carousel-shop-mobile position-relative">
             <div class="carousel-slides d-flex">
 
                 {% for i in 0..5 %}
@@ -56,7 +58,6 @@
                              width="95%">
                         <p class="skin-name">Nom du Skin</p>
                         <p class="skin-price">Prix du Skin</p>
-                        <a href="#" class="btn btn-outline-success btn-purchase">Purchase now</a>
                     </div>
                 {% endfor %}
             </div>

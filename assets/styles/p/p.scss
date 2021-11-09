@@ -20,3 +20,19 @@
   font-weight: normal;
 
 }
+
+.customLogoError{
+  background-color: var(--bs-red);
+  border-radius: 3px;
+  color: white;
+  margin-right: 0.5rem;
+  font-size: 12px;
+  margin-bottom: 5px;
+  padding: 0 5px;
+}
+
+.customTextError{
+  color: var(--bs-red);
+  margin-bottom: 5px;
+  font-size: 12px;
+}

@@ -20,7 +20,7 @@
         <div class="group-profil-pic">
             {% for avatar in firstAvatarGroup %}
                 <div class="img-choice">
-                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice">
+                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice" data-id="{{ avatar.id }}">
                 </div>
             {% endfor %}
         </div>
@@ -28,7 +28,7 @@
         <div class="group-profil-pic">
             {% for avatar in secondAvatarGroup %}
                 <div class="img-choice">
-                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice">
+                    <img src="{{ avatar.path }}" alt="pp-xbox" width="100%" class="js-choice" data-id="{{ avatar.id }}">
                 </div>
             {% endfor %}
         </div>
@@ -36,8 +36,42 @@
 
 </section>
 
-<div class="confirmation">
-    <a href="#" class="bouton-confirm">Confirm</a>
-</div>
+{{ form_start(form) }}
+    <div class="mb-5 d-flex w-100 justify-content-around">
+
+        {{ form_widget(form.avatar, {'type': 'hidden','id': 'confirm-profil-pic'}) }}
+
+        
+        <div class="w-100 me-3">
+            {% if (error == 'badPassword') %}
+                <div class="customError">
+                    <p class="customLogoError">ERROR</p><p class="customTextError">Incorrect Password</p>
+                </div>
+            {% endif %}
+            {% if (error == 'noPassword') %}
+                <div class="customError">
+                    <p class="customLogoError">ERROR</p><p class="customTextError">to change pseudo or password you must enter your current password here</p>
+                </div>
+            {% endif %}
+            {{ form_widget(form.oldPassword, {'attr': {'placeholder': 'Old Password...', 'class': 'form-control'}}) }}
+        </div>
+        
+        <div class="w-100 me-3">
+            {# {% if (error == '' ) %}
+                <div class="customError">
+                    <p class="customLogoError">ERROR</p><p class="customTextError">Provide a valid password</p>
+                </div>
+            {% endif %} #}
+            {{ form_widget(form.pseudo, {'attr': {'placeholder': 'New Pseudo...', 'class': 'form-control'}}) }}
+        </div>
+
+        <div class="w-100">
+            {{ form_widget(form.newPassword, {'attr': {'placeholder': 'New Password...', 'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="confirmation">
+        {{ form_widget(form.submit, {'attr': {'class': 'bouton-confirm'}}) }}
+    </div>
+{{ form_end(form) }}
 
 {% endblock %}
