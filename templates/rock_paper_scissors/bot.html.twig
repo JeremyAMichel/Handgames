@@ -7,19 +7,23 @@
 
         <div class="zone-poing d-flex">
             <div class="playerOne text-center">
-                <div class="divPlayerLeft">
+                
                     {% if app.user %}
-                        <p class="game-pseudo">{{ app.user.pseudo }}</p>
-                        <img class="avatarPlayerOne" src="{{ app.user.avatar.path }}" alt="" width="75px" height="auto">
-                        <p class="levelPlayerOne">Level : {{ app.user.statistiques[0].level }}</p>
+                        <div class="divPlayerLeft">
+                            <p class="game-pseudo">{{ app.user.pseudo }}</p>
+                            <img class="avatarPlayerOne" src="{{ app.user.avatar.path }}" alt="" width="75px" height="auto">
+                            <p class="levelPlayerOne">Level : {{ app.user.statistiques[0].level }}</p>
+                        </div>
                     {% else %}
-                        <p class="game-pseudo">Joueur {{ random(['Alpha', 'Bravo', 'Charlie','Delta','Echo','Foxtrot','Golf',
-                                'Hotel','India','Juliet','Kilo','Lima','Mike','November','Oscar','Papa','Quebec','Romeo',
-                                'Sierra','Tango','Uniform','Victor','Whiskey','X-ray','Yankee','Zulu']) }}</p>
+                        <div class="divPlayerAnonymousLeft">
+                            <p class="game-pseudo">Joueur {{ random(['Alpha', 'Bravo', 'Charlie','Delta','Echo','Foxtrot','Golf',
+                                    'Hotel','India','Juliet','Kilo','Lima','Mike','November','Oscar','Papa','Quebec','Romeo',
+                                    'Sierra','Tango','Uniform','Victor','Whiskey','X-ray','Yankee','Zulu']) }}</p>
+                        </div>
                     {% endif %}
-                </div>
+                
 
-                <img class="handPlayerOne" src="/build/image/game/hand-rock.png" width="200px" height="auto">
+                <img class="handPlayerOne" src="{{ userSkin.RockUrl }}" width="200px" height="auto">
             </div>
 
             <div class="versus">
