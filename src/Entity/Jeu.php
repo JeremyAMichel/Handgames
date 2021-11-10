@@ -25,19 +25,24 @@ class Jeu
     private $nom;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $regle;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $nbrjoueur;
-
-    /**
      * @ORM\OneToMany(targetEntity=Classement::class, mappedBy="jeu")
      */
     private $classements;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $path;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $thumbnail;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
 
     public function __construct()
     {
@@ -63,29 +68,6 @@ class Jeu
         return $this;
     }
 
-    public function getRegle(): ?string
-    {
-        return $this->regle;
-    }
-
-    public function setRegle(?string $regle): self
-    {
-        $this->regle = $regle;
-
-        return $this;
-    }
-
-    public function getNbrjoueur(): ?int
-    {
-        return $this->nbrjoueur;
-    }
-
-    public function setNbrjoueur(int $nbrjoueur): self
-    {
-        $this->nbrjoueur = $nbrjoueur;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Classement[]
@@ -113,6 +95,42 @@ class Jeu
                 $classement->setJeu(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(?string $path): self
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(?string $thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
