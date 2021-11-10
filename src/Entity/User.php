@@ -66,11 +66,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $statistiques;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Skin::class, inversedBy="users")
-     */
-    private $skins;
-
-    /**
      * @ORM\OneToMany(targetEntity=Classement::class, mappedBy="user")
      */
     private $classements;
@@ -80,6 +75,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\OneToMany(targetEntity=UserSkin::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $userSkins;
+
 
 
     public function __construct()
@@ -87,8 +87,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->trophees = new ArrayCollection();
         $this->bordures = new ArrayCollection();
         $this->statistiques = new ArrayCollection();
-        $this->skins = new ArrayCollection();
         $this->classements = new ArrayCollection();
+        $this->userSkins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -277,30 +277,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|Skin[]
-     */
-    public function getSkins(): Collection
-    {
-        return $this->skins;
-    }
-
-    public function addSkin(Skin $skin): self
-    {
-        if (!$this->skins->contains($skin)) {
-            $this->skins[] = $skin;
-        }
-
-        return $this;
-    }
-
-    public function removeSkin(Skin $skin): self
-    {
-        $this->skins->removeElement($skin);
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Classement[]
      */
     public function getClassements(): Collection
@@ -338,6 +314,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserSkin[]
+     */
+    public function getUserSkins(): Collection
+    {
+        return $this->userSkins;
+    }
+
+    public function addUserSkin(UserSkin $userSkin): self
+    {
+        if (!$this->userSkins->contains($userSkin)) {
+            $this->userSkins[] = $userSkin;
+            $userSkin->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserSkin(UserSkin $userSkin): self
+    {
+        if ($this->userSkins->removeElement($userSkin)) {
+            // set the owning side to null (unless already changed)
+            if ($userSkin->getUser() === $this) {
+                $userSkin->setUser(null);
+            }
+        }
 
         return $this;
     }
