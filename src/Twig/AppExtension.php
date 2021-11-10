@@ -5,8 +5,10 @@ namespace App\Twig;
 use App\Entity\Statistique;
 use App\Repository\StatistiqueRepository;
 use App\Entity\User;
+use App\Entity\UserSkin;
 use App\Form\RegistrationFormType;
 use App\Repository\AvatarRepository;
+use App\Repository\SkinRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -73,10 +75,15 @@ class AppExtension extends AbstractExtension
      */
     private $sr;
 
+    /**
+     * @var SkinRepository
+     */
+    private $skinRepository;
+
     public function __construct(Environment $twigEnvironment, AuthenticationUtils $authenticationUtils,
     FormFactoryInterface $formFactory, EntityManagerInterface $em, EmailVerifier $emailVerifier,
      AvatarRepository $avatarRepository, RequestStack $request, UserPasswordEncoderInterface $passwordEncoder,
-     Security $security, StatistiqueRepository $sr)
+     Security $security, StatistiqueRepository $sr, SkinRepository $skinRepository)
     {
         $this->twigEnvironment=$twigEnvironment;
         $this->authenticationUtils=$authenticationUtils;
@@ -88,6 +95,7 @@ class AppExtension extends AbstractExtension
         $this->passwordEncoder=$passwordEncoder;
         $this->security = $security;
         $this->sr = $sr;
+        $this->skinRepository = $skinRepository;
     }
     
     public function getFunctions()
@@ -148,8 +156,8 @@ class AppExtension extends AbstractExtension
 
     public function signupFormRender()
     {
-        $user = new User();
-        $defaultAvatar = $this->avatarRepository->find(1);
+        $user = new User();        
+
         $form = $this->formFactory->create(RegistrationFormType::class, $user);
         $form->handleRequest($this->request);
 
@@ -161,8 +169,20 @@ class AppExtension extends AbstractExtension
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            // set new user avatar as default avatar
+            $defaultAvatar = $this->avatarRepository->find(1);
             $user->setAvatar($defaultAvatar);
+
+            // set new user skin as default skin
+            $defaultSkin = $this->skinRepository->findOneBy(['name' => 'Default Skin']);
+            $userSkin = new UserSkin();    
+            $userSkin->setIsActiveSkin(true);
+            $userSkin->setUser($user);
+            $userSkin->setSkin($defaultSkin);
+
             $this->em->persist($user);
+            $this->em->persist($userSkin);
             $this->em->flush();
 
             // generate a signed url and email it to the user
