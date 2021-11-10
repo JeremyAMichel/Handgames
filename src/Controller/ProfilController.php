@@ -156,8 +156,9 @@ class ProfilController extends AbstractController
         ]);
     }
 
-
-    //this is a temp function for dev working in local
+    ////////////////////////////////////////////////////////
+    //this is a temp function for dev working in local//////
+    ////////////////////////////////////////////////////////
     private function createAvatarPaths()
     {
         $avatars=$this->ar->findAll();

@@ -35,13 +35,18 @@ class Skin
     private $paperUrl;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="skins")
+     * @ORM\Column(type="string", length=255)
      */
-    private $users;
+    private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=UserSkin::class, mappedBy="skin", orphanRemoval=true)
+     */
+    private $userSkins;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->userSkins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,28 +90,43 @@ class Skin
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getName(): ?string
     {
-        return $this->users;
+        return $this->name;
     }
 
-    public function addUser(User $user): self
+    public function setName(string $name): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addSkin($this);
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserSkin[]
+     */
+    public function getUserSkins(): Collection
+    {
+        return $this->userSkins;
+    }
+
+    public function addUserSkin(UserSkin $userSkin): self
+    {
+        if (!$this->userSkins->contains($userSkin)) {
+            $this->userSkins[] = $userSkin;
+            $userSkin->setSkin($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeUserSkin(UserSkin $userSkin): self
     {
-        if ($this->users->removeElement($user)) {
-            $user->removeSkin($this);
+        if ($this->userSkins->removeElement($userSkin)) {
+            // set the owning side to null (unless already changed)
+            if ($userSkin->getSkin() === $this) {
+                $userSkin->setSkin(null);
+            }
         }
 
         return $this;

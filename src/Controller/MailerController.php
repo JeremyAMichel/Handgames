@@ -18,13 +18,13 @@ class MailerController extends AbstractController
     {
         $email = (new Email())
             ->from(new Address('handgames.mailer@gmail.com'))
-            ->to('rem-je42@hotmail.fr')
+            ->to('jonathan.auberix@gmail.com')
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
-            ->subject('La tete de nass on dirait la boule que la statue d\'atlas porte')
-            ->text('Et toi t\'es un huge dog');
+            ->subject('La tete de youss on dirait la boule que la statue d\'atlas porte')
+            ->text('guette le avec sa tête de fatigué là');
 
         $mailer->send($email);
 
