@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\SkinRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,6 +24,11 @@ class RockPaperScissorsController extends AbstractController
     private $userRepository;
 
     /**
+     * @var SkinRepository
+     */
+    private $skinRepository;
+
+    /**
      * @var Security
      */
     private $security;
@@ -33,11 +39,13 @@ class RockPaperScissorsController extends AbstractController
      * @param UserRepository $userRepository
      * @param Security $security
      */
-    public function __construct(EntityManagerInterface $em, UserRepository $userRepository, Security $security)
+    public function __construct(EntityManagerInterface $em, UserRepository $userRepository, Security $security,
+    SkinRepository $skinRepository)
     {
         $this->em = $em;
         $this->userRepository = $userRepository;
         $this->security = $security;
+        $this->skinRepository = $skinRepository;
     }
 
     /**
@@ -56,12 +64,18 @@ class RockPaperScissorsController extends AbstractController
                  * @var User
                  */
                 $currentUser = $this->security->getUser();
-                $currentUserSkins = $currentUser->getUserSkins();
-                foreach($currentUserSkins as $UserSkin){
-                    if(true === $UserSkin->getIsActiveSkin()){
-                        $currentUserActiveSkin = $UserSkin->getSkin();
+
+                if(null === $currentUser){
+                    $currentUserActiveSkin = $this->skinRepository->findOneBy(['name' => 'Default Skin']);
+                }else{
+                    $currentUserSkins = $currentUser->getUserSkins();
+                    foreach($currentUserSkins as $UserSkin){
+                        if(true === $UserSkin->getIsActiveSkin()){
+                            $currentUserActiveSkin = $UserSkin->getSkin();
+                        }
                     }
                 }
+                
 
                 return $this->render('rock_paper_scissors/bot.html.twig', [
                     'userSkin' => $currentUserActiveSkin,
