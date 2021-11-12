@@ -6,6 +6,21 @@
   width: 70%;
 }
 
+.carousel-img{
+  width: 100%;
+  padding-top: 30.96%;
+  position: relative;
+
+}
+
+.carousel-img > img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 .widthauto{
   transition: width 500ms;
   width: 100%;

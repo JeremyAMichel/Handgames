@@ -7,7 +7,7 @@ let winBot = 0;
 
 // On execute ce script uniquement si la variable rockdivbot existe sur la page
 
-if (typeof(rockdivbot) != 'undefined' && typeof (rockdivbot) != null){
+if (typeof(rockdivbot) != 'undefined' && rockdivbot != null){
     // on ajoute les écouteurs d'évenements sur les boutons de choix du joueur
     rockdivbot.addEventListener('click', (e)=>{
        comparaison(choiceIa(),'pierre');
