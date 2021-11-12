@@ -41,6 +41,7 @@ class GameController extends AbstractController
     {
 
         if ($this->jeuRepository->findOneBy(['nom'=>'Rock Paper Scissors'])===null) {
+            
             $this->addDefaultGameToBDD();
         }
 
@@ -55,14 +56,14 @@ class GameController extends AbstractController
     // FONCTION SEULEMENT POUR DEV
     // ATTENTION !!!!!!!!!!!!!!!!!!!!!!
 
-    private function addDefaultGameToBDD() : Response
+    private function addDefaultGameToBDD()
     {
         $rps=new Jeu();
 
         $rps->setDescription('An issue with your friends ? Resolve it HERE !');
         $rps->setNom('Rock Paper Scissors');
         $rps->setPath('/games/rockpaperscissors');
-        $rps->setThumbnail('/build/image/other/pierrefeuilleciseaux.jpg');
+        $rps->setThumbnail('/build/image/other/pierrefeuilleciseaux.png');
 
         $this->em->persist($rps);
         $this->em->flush();
