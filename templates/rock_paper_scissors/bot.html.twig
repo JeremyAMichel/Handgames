@@ -4,30 +4,30 @@
 
 {% block body %}
     <div class="terrain-jeu gap-3 d-flex justify-content-center align-items-end position-relative">
-
         <div class="zone-poing d-flex">
             <div class="playerOne text-center">
                 
                     {% if app.user %}
                         <div class="divPlayerLeft">
                             <p class="game-pseudo">{{ app.user.pseudo }}</p>
-                            <img class="avatarPlayerOne" src="{{ app.user.avatar.path }}" alt="" width="75px" height="auto">
+                            <img src="{{ app.user.avatar.path }}" alt="" width="75px" height="auto">
                             <p class="levelPlayerOne">Level : {{ app.user.statistiques[0].level }}</p>
                         </div>
                     {% else %}
-                        <div class="divPlayerAnonymousLeft">
-                            <p class="game-pseudo">Joueur {{ random(['Alpha', 'Bravo', 'Charlie','Delta','Echo','Foxtrot','Golf',
+                        <div class="divPlayerLeft">
+                            <p class="game-pseudo">PLAYER {{ random(['Alpha', 'Bravo', 'Charlie','Delta','Echo','Foxtrot','Golf',
                                     'Hotel','India','Juliet','Kilo','Lima','Mike','November','Oscar','Papa','Quebec','Romeo',
                                     'Sierra','Tango','Uniform','Victor','Whiskey','X-ray','Yankee','Zulu']) }}</p>
+                            <img src="/build/image/avatars/default-avatar.png" alt="" width="75px" height="auto">
+                            <p class="levelPlayerOne">Level : XXX</p>
                         </div>
                     {% endif %}
-                
 
                 <img class="handPlayerOne" src="{{ userSkin.RockUrl }}" width="200px" height="auto">
             </div>
 
             <div class="versus">
-                <img src="/build/image/game/versus.png" alt="" width="50px" height="auto">
+                <img src="/build/image/game/versus1.png" alt="" width="200px" height="auto">
             </div>
 
             <div class="playerTwo text-center">
@@ -36,14 +36,13 @@
                     <p class="game-pseudo2">BOT {{ random(['Alpha', 'Bravo', 'Charlie','Delta','Echo','Foxtrot','Golf',
                             'Hotel','India','Juliet','Kilo','Lima','Mike','November','Oscar','Papa','Quebec','Romeo',
                             'Sierra','Tango','Uniform','Victor','Whiskey','X-ray','Yankee','Zulu']) }}</p>
+                    <img class="avatarBot" src="/build/image/avatars/default-avatar.png" alt="" width="75px" height="auto">
+                    <p class="levelBot">Level : XXX</p>
                 </div>
 
                 <img class="handPlayerTwo" src="/build/image/game/hand-rock.png" width="200px" height="auto">
             </div>
         </div>
-
-
-
 
             <div class="rockdivbot d-flex">
                 <img
@@ -72,6 +71,22 @@
                         height="98px"
                         width="98px" />
             </div>
+
+        <div class="hidden-choice">
+            <button id="next-round" type="button" class="btn btn-warning">Manche suivante</button>
+        </div>
+
+        <div class="color-results gap-2">
+            <div class="results" id="first-result">
+
+            </div>
+            <div class="results" id="second-result">
+
+            </div>
+            <div class="results" id="third-result">
+
+            </div>
+        </div>
 
     </div>
 

@@ -638,6 +638,30 @@
   border: 1px solid black;
 }
 
+.color-results {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+}
+
+.win-result {
+  background: limegreen;
+}
+
+.lose-result {
+  background: red;
+}
+
+
+.results {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: 2px solid black;
+}
+
 .playerOne,.playerTwo {
   display: flex;
   position: absolute;
@@ -652,7 +676,7 @@
 
 .playerOne {
   left: 30%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 }
 
 .playerTwo {
@@ -668,16 +692,17 @@
 }
 
 .divPlayerLeft {
-  transform: translate(100%, -180%);
+  transform: translate(75%,-180%);
 }
 
+
 .divPlayerRight {
-  transform: translate(-120%,-1020%);
+  transform: translate(-90%,-180%);
 }
 .versus {
   position: absolute;
   display: flex;
-  transform: translate(-50%,50%);
+  transform: translate(61%,-625%);
 }
 .rockdivbot,.paperdivbot,.scissorsdivbot {
   justify-content: center;
@@ -691,11 +716,25 @@
   cursor: pointer;
   border: 1px solid black;
 }
+
 .rockdivbot,.paperdivbot {
   padding: 5px;
 }
+
 .scissorsdivbot {
   padding: 10px;
+}
+.hidden-choice {
+  background: #000000;
+  height: 130px;
+  width: 50%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display:none;
+
+
 }
 /* //////////////////////  TODO  /////////////////////////// */
 

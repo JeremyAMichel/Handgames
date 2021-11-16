@@ -37,23 +37,16 @@
   font-size: 12px;
 }
 
-.game-pseudo,.game-pseudo2 {
+.game-pseudo,.game-pseudo2,.levelBot,.levelPlayerOne {
   font-weight: bold;
   font-size: 18px;
   margin-bottom:0;
 }
 
-.game-pseudo {
+.levelPlayerOne,.game-pseudo{
   color: blue;
-
 }
-.levelPlayerOne {
-  color: blue;
-  font-weight: bold;
-  margin-bottom: 0;
 
-}
-.game-pseudo2 {
+.game-pseudo2,.levelBot {
   color: red;
-
 }

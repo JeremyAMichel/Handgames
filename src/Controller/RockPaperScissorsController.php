@@ -75,13 +75,11 @@ class RockPaperScissorsController extends AbstractController
                         }
                     }
                 }
-                
 
                 return $this->render('rock_paper_scissors/bot.html.twig', [
                     'userSkin' => $currentUserActiveSkin,
                 ]);
             }
         }
-
     }
 }
