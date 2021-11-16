@@ -39,7 +39,7 @@ class ActualiteCrudController extends AbstractCrudController
         return Actualite::class;
     }
 
-
+}
     /*
     public function configureFields(string $pageName): iterable
     {
@@ -50,4 +50,4 @@ class ActualiteCrudController extends AbstractCrudController
         ];
     }
     */
-}
+
