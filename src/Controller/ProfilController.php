@@ -105,7 +105,7 @@ class ProfilController extends AbstractController
                         }
                         // si il y a une valeur dans l'input pseudo
                         if($data['pseudo']!==null){
-                            // si le pseudo n'est pas le même que l'utilisateur possède déjà
+                            // si le pseudo n'est pas celui que l'utilisateur possède déjà
                             if($data['pseudo']!==$currentUser->getPseudo()){
                                 $currentUser->setPseudo($data['pseudo']);
                                 $isAction++;
