@@ -284,7 +284,7 @@
   width: 30%;
 }
 
-.bouton:hover{
+.actu-button:hover{
   cursor: pointer;
 }
 
@@ -293,15 +293,13 @@
 }
 
 .card-actu {
-  border-radius: 15px;
-  background:no-repeat center/100% url("../../image/actu/bg-parchemin2.jpg");
   flex-direction: column;
+  border: 1px solid black;
+  -webkit-box-shadow: 5px 5px 9px 0px black;
+  box-shadow: 5px 5px 9px 0px black;
+
 }
 
-.img-actu {
-  justify-content: center;
-
-}
 .card-body {
   font-weight: bold;
 }
@@ -353,8 +351,6 @@
 .avatar-stats {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   background-color: #7f7f7f;
-  height: 166px;
-  width: 166px;
 }
 
 .stats-games {
@@ -733,8 +729,14 @@
   align-items: center;
   justify-content: center;
   display:none;
+}
 
-
+.desc-game {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 /* //////////////////////  TODO  /////////////////////////// */
 
@@ -928,11 +930,5 @@
   }
   #carousel-shop-mobile-screen {
     display: flex;
-  }
-}
-
-@media only screen and (max-width: 1200px){
-  #mediaResponsive {
-    display: none !important;
   }
 }

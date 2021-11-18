@@ -1,17 +1,23 @@
-<h2 class="titre-actu m-3">{{ new.titre }}</h2>
-    <div class="img-actu">
+<div class="actu-content">
+
+    <h2 class="titre-actu m-3">{{ new.titre }}</h2>
         <img class="img-news" src="{{ new.PathImg }}" alt="Image de l'actualite">
-    </div>
 
     <div class="card-body actu-body">
+
         <p class="card-text">{{ new.DescriptionCourte }}</p>
+
         <div class="created-at-new text-align-left">
             <p>Date du post : {{ new.CreatedAt|date('d-m-Y') }}</p>
         </div>
+
         <div class="w-100 d-flex justify-content-center">
-            <div class="bouton-actu bouton">More info</div>
+            <button id="btn-actu" class="bouton-actu">More info</button>
         </div>
+
     </div>
+</div>
+
 
     <div class="overlay overlay-actu">
         <div class="close-popup close-popup-actu"></div>
