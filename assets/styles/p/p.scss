@@ -3,9 +3,11 @@
   font-weight: bold;
   font-size: x-large;
 }
+
 .stats-center {
   margin-bottom: 0px;
 }
+
 .title-trophee {
   color: black;
   font-weight: bold;
@@ -16,6 +18,7 @@
   font-weight: bold;
   font-size:1.2rem;
 }
+
 .card-text {
   font-weight: normal;
 
@@ -49,4 +52,8 @@
 
 .game-pseudo2,.levelBot {
   color: red;
+}
+
+#between-round-RPS-bot-text{
+  color: white;
 }
