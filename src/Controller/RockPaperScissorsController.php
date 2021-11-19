@@ -82,4 +82,33 @@ class RockPaperScissorsController extends AbstractController
             }
         }
     }
+
+    /**
+     * @Route("/games/rockpaperscissors/ajax/{win}", name="rock_paper_scissors_ajax")
+     */
+    public function RockPaperScissorsAjax($win):Response
+    {
+        /**
+         * @var User
+         */
+        $currentUser = $this->getUser();              
+
+        if(null !== $currentUser){
+
+            $stats=$currentUser->getStatistiques()[0];
+            $stats->setNbrPartie(($stats->getNbrPartie())+1);
+            if('true' === $win){  
+                $stats->setNbrWin(($stats->getNbrWin())+1);
+            }
+            if('false' === $win){
+                $stats->setNbrLose(($stats->getNbrLose())+1);
+            }
+
+            $this->em->persist($stats);
+            $this->em->flush();
+            
+        }
+        
+        return new Response();
+    }
 }

@@ -27,7 +27,7 @@ if (typeof(rockdivbot) != 'undefined' && (rockdivbot) != null){
     // on ajoute les écouteurs d'évenements sur les boutons de choix du joueur
     rockdivbot.addEventListener('click', (e)=>{
        comparaison(choiceIa(),'pierre');
-       changeSkinFigure(userSkin, 'pierre');
+       changeSkinFigure(userSkin, 'pierre');     
 
     })
 
@@ -50,7 +50,8 @@ if (typeof(rockdivbot) != 'undefined' && (rockdivbot) != null){
     })
 
 }
-    // choix aleatoire de l'IA
+
+// choix aleatoire de l'IA
 function choiceIa(){
     let tempRand = Math.random();
 
@@ -95,6 +96,7 @@ function comparaison(choiceIa , choicePlayer){
         }
 
         if(winBot == 2){
+            sendWinInfo(false);
             timeAnimationMobile3 = setTimeout(function() {
                 gameFinished.classList.replace('d-none','d-flex');
                 endGameMsg.innerHTML='Le bot vous a foudroyé...';
@@ -121,6 +123,7 @@ function comparaison(choiceIa , choicePlayer){
             thirdColor.classList.add('win-result');
         }
         if(winPlayer == 2){
+            sendWinInfo(true);
             timeAnimationMobile3 = setTimeout(function() {
                 gameFinished.classList.replace('d-none','d-flex');
                 endGameMsg.innerHTML='Vous avez foudroyé le bot !';
@@ -147,5 +150,47 @@ function changeSkinFigure(skin, figure){
 
     if(figure==='ciseaux'){
         skin.src='/build/image/skins/default-skin/default-hand-scissors.png';
+    }
+}
+
+
+// Ajax to send stats to symfony
+function sendWinInfo(win) {
+    // URL to contact using AJAX
+    var url = '/games/rockpaperscissors/ajax/'+win;
+
+    // // Create a new AJAX request object
+    var request = new XMLHttpRequest();
+
+    // // Open a connection to the server
+    request.open('GET', url);
+
+    // // Run our handleResponse function when the server responds
+    request.addEventListener('readystatechange', handleResponse);
+
+    // // Actually send the request
+    request.send();
+}
+
+
+/*
+This function gets called every time something changes
+with our AJAX request.
+*/
+function handleResponse() {
+    // "this" refers to the object we called addEventListener on
+    var request = this;
+
+    /*
+    Exit this function unless the AJAX request is complete,
+    and the server has responded.
+    */
+    if (request.readyState != 4)
+        return;
+
+    // If there wasn't an error, run our showResponse function
+    if (request.status == 200) {
+        var ajaxResponse = request.responseText;
+        console.log(ajaxResponse);
     }
 }
