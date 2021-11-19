@@ -679,27 +679,34 @@
   right: 30%;
   transform: translate(50%, -50%);
 }
+
 .divPlayerLeft,.divPlayerRight{
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  top: -55px;
 }
 
 .divPlayerLeft {
-  transform: translate(75%,-180%);
+  right: 30%;
+  transform: translate(50%,-50%);
 }
 
 
 .divPlayerRight {
-  transform: translate(-90%,-180%);
+  left: 30%;
+  transform: translate(-50%,-50%);
 }
+
 .versus {
   position: absolute;
   display: flex;
-  transform: translate(61%,-625%);
+  top: 0;
+  transform: translateY(100%);
 }
+
 .rockdivbot,.paperdivbot,.scissorsdivbot {
   justify-content: center;
   align-items: center;
@@ -720,15 +727,28 @@
 .scissorsdivbot {
   padding: 10px;
 }
+
 .hidden-choice {
   background: #000000;
   height: 130px;
   width: 50%;
-  display: flex;
   position: absolute;
   align-items: center;
   justify-content: center;
-  display:none;
+  border-radius: 25px 25px 0 0;
+  flex-direction: column;
+}
+
+.game-finished{
+  background: #000000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .desc-game {
@@ -738,7 +758,6 @@
   align-items: center;
   justify-content: center;
 }
-/* //////////////////////  TODO  /////////////////////////// */
 
 .carousel-slide:hover,
 .carousel-slide:focus,
@@ -793,6 +812,7 @@
   .img-display{
     margin-right: 1rem;
   }
+
   .carousel-arrows {
     width:30px;
     height:30px;

@@ -26,9 +26,7 @@
                 <img class="handPlayerOne" src="{{ userSkin.RockUrl }}" width="200px" height="auto">
             </div>
 
-            <div class="versus">
-                <img src="/build/image/game/versus1.png" alt="" width="200px" height="auto">
-            </div>
+            
 
             <div class="playerTwo text-center">
 
@@ -72,8 +70,9 @@
                         width="98px" />
             </div>
 
-        <div class="hidden-choice">
-            <button id="next-round" type="button" class="btn btn-warning">Manche suivante</button>
+        <div class="hidden-choice d-none">
+            <p id="between-round-RPS-bot-text"></p>
+            <button id="next-round" type="button" class="btn btn-warning">Next Round</button>
         </div>
 
         <div class="color-results gap-2">
@@ -85,6 +84,18 @@
             </div>
             <div class="results" id="third-result">
 
+            </div>
+        </div>
+
+        <div class="versus">
+            <img src="/build/image/game/versus1.png" alt="" width="200px" height="auto">
+        </div>
+
+        <div class="game-finished d-none">
+            <h4 class="endOfGameMsg mb-5"></h4>
+            <div class="d-flex">
+                <a href="{{ path('rock_paper_scissors', { 'mode': 'bot' }) }}" class="btn btn-warning me-3">Rematch</a>
+                <a href="{{ path('rock_paper_scissors') }}" class="btn btn-warning">Back to mode Selection</a>
             </div>
         </div>
 
