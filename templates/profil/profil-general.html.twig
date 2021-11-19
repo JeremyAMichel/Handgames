@@ -57,11 +57,11 @@
         </div>
         
         <div class="w-100 me-3">
-            {# {% if (error == '' ) %}
+             {% if (error == 'pseudoAlreadyExist' ) %}
                 <div class="customError">
-                    <p class="customLogoError">ERROR</p><p class="customTextError">Provide a valid password</p>
+                    <p class="customLogoError">ERROR</p><p class="customTextError">Pseudo Already Exist</p>
                 </div>
-            {% endif %} #}
+            {% endif %}
             {{ form_widget(form.pseudo, {'attr': {'placeholder': 'New Pseudo...', 'class': 'form-control'}}) }}
         </div>
 

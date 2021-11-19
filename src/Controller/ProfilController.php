@@ -105,11 +105,17 @@ class ProfilController extends AbstractController
                         }
                         // si il y a une valeur dans l'input pseudo
                         if($data['pseudo']!==null){
-                            // si le pseudo n'est pas le même que l'utilisateur possède déjà
+                            // si le pseudo n'est pas celui que l'utilisateur possède déjà
                             if($data['pseudo']!==$currentUser->getPseudo()){
-                                $currentUser->setPseudo($data['pseudo']);
-                                $isAction++;
-                                $this->em->persist($currentUser);
+                                if($this->ur->findOneBy(['pseudo'=>$data['pseudo']]) === null){
+                                    $currentUser->setPseudo($data['pseudo']);
+                                    $isAction++;
+                                    $this->em->persist($currentUser);
+                                }
+                                else{
+                                    return $this->redirectToRoute('profilGeneral',['error'=>'pseudoAlreadyExist']);
+                                }
+
                             }                         
                         }  
 
