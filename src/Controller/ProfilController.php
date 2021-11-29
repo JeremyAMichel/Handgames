@@ -167,66 +167,16 @@ class ProfilController extends AbstractController
     ////////////////////////////////////////////////////////
     private function createAvatarPaths()
     {
-        $avatars=$this->ar->findAll();
-        if(count($avatars)!= 8){
-            $firstAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/default-avatar.png']);
-            if(null==$firstAvatar){
-                $firstAvatar = new Avatar();
-                $firstAvatar->setPath('/build/image/avatars/default-avatar.png');
-                $this->em->persist($firstAvatar);
+        $avatarsArray=['/build/image/avatars/default-avatar.png','/build/image/avatars/profil-pic-1.jpg','/build/image/avatars/profil-pic-2.png',
+           '/build/image/avatars/profil-pic-3.jpg','/build/image/avatars/profil-pic-4.png','/build/image/avatars/profil-pic-5.png',
+            '/build/image/avatars/profil-pic-6.png','/build/image/avatars/profil-pic-7.jpg'];
+        foreach ($avatarsArray as $avatar){
+            if(null==$this->ar->findOneBy(['path' => $avatar])){
+                $newAvatar = new Avatar();
+                $newAvatar->setPath($avatar);
+                $this->em->persist($newAvatar);
             }
-
-            $secondAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-1.jpg']);
-            if(null==$secondAvatar){
-                $secondAvatar = new Avatar();
-                $secondAvatar->setPath('/build/image/avatars/profil-pic-1.jpg');
-                $this->em->persist($secondAvatar);
-            }
-
-            $thirdAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-2.png']);
-            if(null==$thirdAvatar){
-                $thirdAvatar = new Avatar();
-                $thirdAvatar->setPath('/build/image/avatars/profil-pic-2.png');
-                $this->em->persist($thirdAvatar);
-            }
-
-            $fourthAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-3.jpg']);
-            if(null==$fourthAvatar){
-                $fourthAvatar = new Avatar();
-                $fourthAvatar->setPath('/build/image/avatars/profil-pic-3.jpg');
-                $this->em->persist($fourthAvatar);
-            }
-
-            $fifthAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-4.png']);
-            if(null==$fifthAvatar){
-                $fifthAvatar = new Avatar();
-                $fifthAvatar->setPath('/build/image/avatars/profil-pic-4.png');
-                $this->em->persist($fifthAvatar);
-            }
-
-            $sixthAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-5.png']);
-            if(null==$sixthAvatar){
-                $sixthAvatar = new Avatar();
-                $sixthAvatar->setPath('/build/image/avatars/profil-pic-5.png');
-                $this->em->persist($sixthAvatar);
-            }
-
-            $seventhAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-6.png']);
-            if(null==$seventhAvatar){
-                $seventhAvatar = new Avatar();
-                $seventhAvatar->setPath('/build/image/avatars/profil-pic-6.png');
-                $this->em->persist($seventhAvatar);
-            }
-
-            $eighthAvatar = $this->ar->findOneBy(['path' => '/build/image/avatars/profil-pic-7.jpg']);
-            if(null==$eighthAvatar){
-                $eighthAvatar = new Avatar();
-                $eighthAvatar->setPath('/build/image/avatars/profil-pic-7.jpg');
-                $this->em->persist($eighthAvatar);
-            }
-
-            $this->em->flush();
-
         }
+        $this->em->flush();
     }
 }

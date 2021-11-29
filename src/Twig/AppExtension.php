@@ -171,7 +171,7 @@ class AppExtension extends AbstractExtension
             );
 
             // set new user avatar as default avatar
-            $defaultAvatar = $this->avatarRepository->find(1);
+            $defaultAvatar = $this->avatarRepository->findOneBy(['path' => '/build/image/avatars/default-avatar.png']);
             $user->setAvatar($defaultAvatar);
 
             // set new user skin as default skin

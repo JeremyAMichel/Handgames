@@ -823,10 +823,7 @@
   .popup-actu-size{
     width: 85%;
   }
-  .rewards-container{
-    flex-direction: column;
-    align-items: center;
-  }
+
   .carousel-arrows {
     width:30px;
     height:30px;
@@ -916,11 +913,14 @@
 @media only screen and (max-width: 600px){
   .reward-container {
     width: 95%;
+    flex-direction: column;
+    align-items: center;
   }
 
   .stats-games {
     width: 85%;
   }
+
 
   .popup-login-size{
     width: 80%;
